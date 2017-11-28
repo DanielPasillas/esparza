@@ -1,0 +1,40 @@
+﻿@model grupoesparza.Areas.Administrator.Models.Auth
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+}
+
+
+<section id="password-protected-section">
+    <div class="password-protected-inner bg-image" style="background-image: url(assets/img/misc/misc-5.jpg); background-position: 50% 50%;">
+
+
+        <span class="cover bg-transparent-4-dark"></span>
+
+
+        <div class="tt-post-password full-height-vh">
+            <div class="tt-post-password-inner">
+                <div class="tt-post-password-icon"><i class="fa fa-lock"></i></div>
+                <div class="tt-post-password-text">Para continuar por favor ingresa tu Email</div>
+                   
+                @using (Html.BeginForm("Login","Account", FormMethod.Post, new {@class = "form-btn-inside", @id = "tt-post-password-form"}))
+                {
+                   <div class="form-group">
+                       @Html.AntiForgeryToken()
+
+                       @Html.TextBoxFor(m => m.Email, new {@type = "email", @class = "form-control", @required = "true", @placeholder = "Ingresa tu Email...", @autofocus = "true"})
+                       @Html.PasswordFor(m => m.Password, new { @type = "password", @class = "form-control", @required = "true", @placeholder = "Ingresa tu contraseña" })
+                      
+                       <button type="submit">Ingresar</button>
+                   </div>
+                }
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+

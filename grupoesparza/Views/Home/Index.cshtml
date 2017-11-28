@@ -1,0 +1,25 @@
+﻿@model IEnumerable<grupoesparza.Models.galerias>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "!Bienvenid@";
+}
+
+<!-- Section slider -->
+<!-- !! STATIC CONTENT !!  -->
+@Html.Partial("PartialViews/_sliderIndex")
+
+<!-- Section about -->
+<!-- !! STATIC CONTENT !! -->
+@Html.Partial("PartialViews/_aboutIndex")
+
+<!-- Section articles photos -->
+@Html.Partial("PartialViews/_articlesPhotos")
+
+<!-- Section articles photos -->
+<!-- !! STATIC CONTENT !! -->
+@Html.Partial("PartialViews/_testimonialClients")
+
+<!-- Main footer -->
+<!-- !! STATIC CONTENT !!  -->
+@Html.Partial("~/Views/Footer.cshtml")

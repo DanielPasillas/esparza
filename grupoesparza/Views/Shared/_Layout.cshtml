@@ -1,0 +1,129 @@
+﻿
+<!DOCTYPE html>
+<html lang="en" class=" wow-animation">
+
+<!-- Mirrored from livedemo00.template-help.com/fiona_v2/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 18 Oct 2017 01:31:00 GMT -->
+<head>
+
+    <title>@ViewBag.Title - Grupo Esparza</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="~/Content/img/esparza.png" type="image/x-icon">
+
+    <link rel="icon" href="~/Content/img/favicon.png" type="image/x-icon">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700" rel="stylesheet">
+
+    <!--Here we place the CSS Vendor.-->
+    @Styles.Render("~/Content/vendor")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+
+<body id="body" class="animsition tt-boxed tt-dark-style">
+    <header class="section page-header">
+        <!-- RD Navbar-->
+        <div class="rd-navbar-wrap">
+            <nav class="rd-navbar" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed"
+                 data-md-layout="rd-navbar-static" data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static"
+                 data-lg-device-layout="rd-navbar-static" data-md-stick-up-offset="80px" data-lg-stick-up-offset="46px"
+                 data-md-stick-up="true" data-lg-stick-up="true">
+                <div class="rd-navbar-collapse-toggle rd-navbar-fixed-element-1" data-rd-navbar-toggle=".rd-navbar-collapse">
+                    <span></span>
+                </div>
+
+                <div class="rd-navbar-main-outer">
+                    <div class="rd-navbar-main">
+                        <!-- RD Navbar Panel-->
+                        <div class="rd-navbar-panel">
+                            <!-- RD Navbar Toggle-->
+                            <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
+                            <!-- RD Navbar Brand -->
+                            <div class="rd-navbar-brand">
+                                <a class="brand" href="/">
+                                    <img class="brand-logo-light" src="~/Content/img/esparza.png" alt="" width="172" height="32" />
+                                    <!--img class="brand-logo-light" src="../../static.livedemo00.template-help.com/fiona_v2/assets/img/logo-light.png" alt="" width="172" height="32" /-->
+                                </a>
+                            </div>
+                        </div>
+                        <div class="rd-navbar-main-element">
+                            <div class="rd-navbar-nav-wrap">
+                                <!-- RD Navbar Nav-->
+                                <ul class="rd-navbar-nav">
+                                    
+                                    <!-- Index Link -->
+                                    <li>
+                                        <a href="@Url.Action("Index", "Home")">Inicio</a>
+                                    </li>
+
+                                    <!--Services Link-->
+                                    <li>
+                                        <a href="#">Servicios</a>
+                                        <ul class="rd-navbar-dropdown">
+                                            <li><a href="@Url.Action("paquetes-graduacion","servicios")">Paquetes de graduación</a></li>
+                                            <li><a href="@Url.Action("renta-togas","servicios")">Renta de togas</a></li>
+                                            <!--li><a href="about-me-fluid.html">Documentación</a></li-->
+                                        </ul>
+                                    </li>
+
+                                    <!--Events link-->
+                                    <li>
+                                        <a href="#">Eventos</a>
+                                        <ul class="rd-navbar-dropdown">
+                                            <li><a href="@Url.Action("bodas","eventos")">Bodas</a></li>
+                                            <li><a href="@Url.Action("xv-anos","eventos")">XV años</a></li>
+                                            <li><a href="@Url.Action("bautizos","eventos")">Bautizos</a></li>
+                                            <li><a href="@Url.Action("primera-comunion","eventos")">Primera comunión</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <!--Contact Section Link-->
+                                    <li>
+                                        <a href="@Url.Action("contacto", "home")">Contacto</a>
+                                    </li>
+
+                                    <!-- Sign in Link-->
+                                    <li>
+                                        <a href="#">Registrate</a>
+                                    </li>
+
+                                    <!-- Login section Link-->
+                                    <li>
+                                        <a href="@Url.Action("log-in", "account")">Ingresa</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="rd-navbar-aside">
+                            <div class="social-buttons">
+                                <ul>
+                                    <li><a href="https://es-la.facebook.com/Grupo-Esparza-409684932558879/" class="btn btn-social-min btn-default btn-rounded-full" title="Follow me on Facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#" class="btn btn-social-min btn-default btn-rounded-full" title="Follow me on Twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#" class="btn btn-social-min btn-default btn-rounded-full" title="Follow me on Google+" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div id="body-content">
+
+        <!-- Render body in which we will show the View Partials -->
+        @RenderBody()
+    </div>
+        <a href="#body" class="scrolltotop sm-scroll" title="Scroll to top"><i class="fa fa-chevron-up"></i></a>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/javascript")
+        @RenderSection("scripts", required: false)
+
+</body>
+</html>

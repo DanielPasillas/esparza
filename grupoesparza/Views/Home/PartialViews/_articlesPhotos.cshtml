@@ -1,0 +1,49 @@
+﻿@model IEnumerable<grupoesparza.Models.galerias>
+
+<!--Section pictures index -->
+<!-- The data is fetched from the galleries table, by using a random statement. -->
+<section id="gallery-single-section" class="margin-top-100">
+    <div class="custom-heading custom-heading-lg  text-center">
+        <div class="custom-heading-inner tt-wrap">
+            <h1 class="custom-heading-title">Nuestros trabajos</h1>
+            <hr class="hr-short">
+        </div>
+    </div>
+
+    <div class="isotope-wrap ">
+        <div class="isotope col-3 gutter-3">
+            <div id="gallery" class="isotope-items-wrap lightgallery gsi-color">
+                <div class="grid-sizer"></div>
+                @{
+
+                    if(!Model.Any())
+                    {
+                        <div class="alert alert-warning">
+                            No se encontraron imágenes
+                        </div>
+                    }
+                    else
+                    {
+                        foreach (var Gallery in Model)
+                        {
+
+                            <div class="isotope-item ">
+                                <a href="../../Content/img/galerias/@Gallery.imagen"
+                                   class="gallery-single-item lg-trigger wow fadeInUp" data-wow-delay=".3s"
+                                   data-exthumbnail="../../Content/img/galerias/@Gallery.imagen"
+                                   data-sub-html="<p>@Gallery.comentario</p>">
+                                    <img src="../../Content/img/galerias/@Gallery.imagen" class="gs-item-image" alt="">
+                                    <div class="gsi-image-caption">
+                                        <!-- Description Image-->
+                                        @Gallery.comentario
+                                    </div>
+                                    <div class="gs-item-icon"><i class="fa fa-search"></i></div>
+                                </a>
+                            </div>
+                        }
+                    }
+                }             
+            </div>
+        </div>
+    </div>
+</section>

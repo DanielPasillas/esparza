@@ -1,0 +1,25 @@
+﻿<!-- this partial view will render the header portrait header -->
+<!-- Section  Header Cover Main Section -->
+<section id="page-header" class="ph-lg">
+    <div class="page-header-image  bg-image" style="background-image: url(../../Content/img/@ViewBag.ImgCover);">
+        <div class="cover bg-transparent-5-dark"></div>
+    </div>
+    <div class="page-header-inner tt-wrap">
+        <div class="page-header-caption parallax-4 fade-out-scroll-4">
+            <br /><br />
+            <h1 class="page-header-title">
+                <!-- Title Header -->
+                Grupo Esparza - @ViewBag.Evento
+
+            </h1>
+            <div class="page-header-category"><a href="@Url.Action("contacto","home")" target="_blank">Contáctanos</a></div>
+            <div class="page-header-description" data-max-words="200">
+                <!--Paragraph description-->
+                <p>
+                    @ViewBag.Descripcion
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+

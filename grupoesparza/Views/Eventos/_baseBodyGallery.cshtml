@@ -1,0 +1,33 @@
+﻿<!-- this page will render the gallery body for each type of event -->
+<!-- Section Gallery -->
+<section id="gallery-single-section">
+    <div class="isotope-wrap tt-wrap">
+        <div class="isotope col-3 gutter-3">
+            <div id="gallery" class="isotope-items-wrap lightgallery">
+                <div class="grid-sizer"></div>
+                <!-- Gallery Item -->
+                <!-- We will store the gallery by using a loop, this one will be get from a database ok.-->
+                @for (int i = 0; i < 6; i++)
+                {
+                    
+                    <div class="isotope-item">
+                        <a href="../../Content/img/contact-background.jpg" class="gallery-single-item lg-trigger" data-exthumbnail="../../Content/img/contact-background.jpg" data-sub-html="<p>Professional photography for everyone</p>">
+                            <img src="../../Content/img/contact-background.jpg" class="gs-item-image" alt="">
+                            <div class="gsi-image-caption">Professional photography for everyone</div>
+                            <div class="gs-item-icon"><i class="fa fa-search"></i></div>
+                        </a>
+                    </div>
+                }
+               
+            </div>
+            
+            <!-- View More component-->
+            <div class="isotope-pagination">
+                <div class="iso-load-more">
+                    <a role="button" class="btn btn-dark-bordered btn-lg" href="#see-more">Ver más</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
