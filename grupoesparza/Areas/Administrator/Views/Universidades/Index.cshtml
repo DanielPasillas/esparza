@@ -1,0 +1,24 @@
+﻿@model IEnumerable<grupoesparza.Models.universidades>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+}
+
+@if(!Model.Any())
+{
+    <div class="alert" alert-warning>
+        No se encontraron universidades.
+    </div>
+}
+else
+{
+    foreach(var universidad in Model)
+    {
+        <ul>
+            <li>@universidad.NombreUniversidad</li>
+        </ul>
+    }
+}
+

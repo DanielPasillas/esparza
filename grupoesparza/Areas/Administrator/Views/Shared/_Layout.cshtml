@@ -52,8 +52,6 @@
                         </div>
 
                         <!--We will show this section only when administrator are logged in-->
-                        @if (Request.IsAuthenticated)
-                        {
                         <div class="rd-navbar-main-element">
                             <div class="rd-navbar-nav-wrap">
                                 <!-- RD Navbar Nav-->
@@ -64,19 +62,10 @@
                                         <a href="@Url.Action("Index", "Home")">Inicio</a>
                                     </li>
 
-                                    <!--Services Link-->
-                                    <li>
-                                        <a href="#">Servicios</a>
-                                        <ul class="rd-navbar-dropdown">
-                                            <li><a href="@Url.Action("paquetes-graduacion", "servicios")">Paquetes de graduación</a></li>
-                                            <li><a href="@Url.Action("renta-togas", "servicios")">Renta de togas</a></li>
-                                            <!--li><a href="about-me-fluid.html">Documentación</a></li-->
-                                        </ul>
-                                    </li>
 
-                                    <!--Events link-->
+                                    <!--Pedidos-->
                                     <li>
-                                        <a href="#">Eventos</a>
+                                        <a href="#">Pedidos</a>
                                         <ul class="rd-navbar-dropdown">
                                             <li><a href="@Url.Action("bodas", "eventos")">Bodas</a></li>
                                             <li><a href="@Url.Action("xv-anos", "eventos")">XV años</a></li>
@@ -87,23 +76,21 @@
 
                                     <!--Contact Section Link-->
                                     <li>
-                                        <a href="@Url.Action("contacto", "home")">Contacto</a>
+                                        <a href="@Url.Action("index", "universidades")">Universidades</a>
                                     </li>
 
-                                    <!-- Sign in Link-->
+                                   
+                                    <!-- Log Off section Link-->
                                     <li>
-                                        <a href="#">Registrate</a>
-                                    </li>
-
-                                    <!-- Login section Link-->
-                                    <li>
-                                        <a href="@Url.Action("log-in", "account")">Ingresa</a>
+                                        <a href="#">
+                                        <span class="glyphicon glyphicon-log-out"></span>
+                                        Cerrar Sesión
+                                        </a>
                                     </li>
 
                                 </ul>
                             </div>
                         </div>
-                        }
                         <div class="rd-navbar-aside">
                            <!--We removed the social network links-->
                         </div>
