@@ -18,9 +18,9 @@ namespace grupoesparza.Classes
 
         public bool ValidateUser(Login loginModel)
         {
-            using(_dbContext)
+            using (_dbContext)
             {
-
+                var i = 0;
             }
 
             return true;
