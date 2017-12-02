@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using grupoesparza.Models;
-using grupoesparza.Areas.Classes;
 using System.Web;
 using System.Web.Mvc;
 
@@ -12,23 +11,36 @@ namespace grupoesparza.Areas.Administrator.Controllers
     {
         private readonly esparza_dbEntities _dbContext;
 
-        public UniversidadesController(esparza_dbEntities dbContext)
-        {
-            _dbContext = dbContext;
-        }
 
-        //Methods Section.
-        public List<universidades> GetUsers()
+        public UniversidadesController()
         {
-            return _dbContext.universidades.ToList();
+            _dbContext = new esparza_dbEntities();
         }
-
 
         // GET: Administrator/Universidades
         public ActionResult Index()
         {
-            var users = GetUsers();
-            return View("Index", users);
+            var universidades = _dbContext.universidades.ToList();
+            return View(universidades);
+        }
+
+        [ActionName("nueva")]
+        public ActionResult Nueva()
+        {
+            return View("Nueva");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [RequireHttps]
+        public ActionResult Save(universidades infoUni)
+        {
+            if(ModelState.IsValid)
+            {
+                return RedirectToAction("Index");
+            }
+
+            return View();
         }
     }
 }

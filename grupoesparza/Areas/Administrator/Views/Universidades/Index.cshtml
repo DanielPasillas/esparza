@@ -14,11 +14,47 @@
 }
 else
 {
-    foreach(var universidad in Model)
-    {
-        <ul>
-            <li>@universidad.NombreUniversidad</li>
-        </ul>
-    }
+    <br /><br />
+    <h3>Universidades</h3><br />
+    <button data-toggle="modal" data-target="#university-modal" class="btn btn-success btn-sm">
+        <span class="glyphicon glyphicon-plus"></span>
+        Agregar universidad
+    </button>
+    <table class="table ">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Universidad</th>
+                <th>Estatus</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var universidad in Model)
+            {
+                <tr>
+                    <td>@universidad.id_universidad</td>
+                    <td>@universidad.NombreUniversidad</td>
+                    <td>@universidad.estatus</td>
+                    <td>
+                        <button class="btn btn-default btn-xs">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            Editar
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger btn-xs">
+                            <span class="glyphicon glyphicon-trash"></span>
+                            Eliminar
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>    
 }
+
+<!-- Modal for partial Views -->
+@Html.Partial("_partials/_AddUniversity")
 

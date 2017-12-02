@@ -1,0 +1,18 @@
+﻿@model grupoesparza.Models.universidades
+
+@{
+    ViewBag.Title = "Nueva";
+    Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+}
+
+<br /><br />
+@using (Html.BeginForm("save","universidades", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.)
+    </div>
+}
+
+
