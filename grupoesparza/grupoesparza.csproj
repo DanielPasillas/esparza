@@ -164,8 +164,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Administrator\AdministratorAreaRegistration.cs" />
     <Compile Include="Areas\Administrator\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Administrator\Controllers\HomeController.cs" />
     <Compile Include="Areas\Administrator\Controllers\UniversidadesController.cs" />
     <Compile Include="Areas\Administrator\Models\Account.cs" />
+    <Compile Include="Areas\Administrator\Models\Universidades.cs" />
     <Compile Include="Classes\AccountClass.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EventosController.cs" />
@@ -238,6 +240,7 @@
     <Compile Include="utilerias\Utilerias.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Administrator\Content\js\Universidades.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\lightgallery.min.css" />
@@ -313,8 +316,9 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\fonts\glyphicons-halflings-regulard41d.eot" />
     <Content Include="Areas\Administrator\Views\Universidades\Index.cshtml" />
-    <Content Include="Areas\Administrator\Views\Universidades\Nueva.cshtml" />
     <Content Include="Areas\Administrator\Views\Universidades\_partials\_AddUniversity.cshtml" />
+    <Content Include="Areas\Administrator\Views\Universidades\_FormUniversities.cshtml" />
+    <Content Include="Areas\Administrator\Views\Home\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -362,6 +366,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Administrator\Content\css\" />
     <Folder Include="Views\Admin\" />
   </ItemGroup>
   <ItemGroup>

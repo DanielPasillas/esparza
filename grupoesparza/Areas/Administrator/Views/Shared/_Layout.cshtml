@@ -59,7 +59,7 @@
                                     
                                     <!-- Index Link -->
                                     <li>
-                                        <a href="@Url.Action("Index", "Home")">Inicio</a>
+                                        <a href="@Url.Action("Index", "home")">Inicio</a>
                                     </li>
 
 
@@ -74,7 +74,17 @@
                                         </ul>
                                     </li>
 
-                                    <!--Contact Section Link-->
+                                    <!--Universidades Section-->
+                                    <li>
+                                        <a href="@Url.Action("index","universidades")">Universidades</a>
+                                    </li>
+
+                                    <!--Universidades Section-->
+                                    <li>
+                                        <a href="@Url.Action("index","carreras")">Carreras</a>
+                                    </li>
+
+                                    <!--Universidades Section-->
                                     <li>
                                         <a href="@Url.Action("index","universidades")">Universidades</a>
                                     </li>
@@ -107,6 +117,7 @@
     </div>
         <a href="#body" class="scrolltotop sm-scroll" title="Scroll to top"><i class="fa fa-chevron-up"></i></a>
         @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryval")
         @Scripts.Render("~/bundles/bootstrap")
         @Scripts.Render("~/bundles/javascript")
         @RenderSection("scripts", required: false)

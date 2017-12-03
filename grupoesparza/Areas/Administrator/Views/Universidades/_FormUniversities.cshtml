@@ -1,0 +1,14 @@
+﻿@model grupoesparza.Areas.Administrator.Models.Universidades
+
+<br /><br />
+
+@Html.AntiForgeryToken()
+
+<div class="form-group">
+    @Html.LabelFor(m => m.nombreUniversidad)
+    @Html.TextBoxFor(m => m.nombreUniversidad, new {@class = "form-control", @autofocus = "true", @placeholder = "Ingresa el nombre de universidad..."})
+    @Html.ValidationMessageFor(m => m.nombreUniversidad)
+</div>
+
+
+@Scripts.Render("~/bundles/jqueryval")

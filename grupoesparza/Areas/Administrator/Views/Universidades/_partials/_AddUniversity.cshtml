@@ -1,22 +1,27 @@
-﻿
-
-<div id="university-modal" class="modal fade" role="dialog">
+﻿<div id="university-modal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
+            @using (Html.BeginForm("save", "universidades", FormMethod.Post))
+            {
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Nueva universidad</h4>
+                <h4 class="modal-title">Registro universidad</h4>
             </div>
             <div class="modal-body">
-                <label for="nombre">Nombre universidad</label>
-                <input type="text" placeholder="Ingrese el nombre de universidad" id="nombre" class="form-control" name="name" value="" autofocus="true"/>
                
+                <div id="form-container">
+                    <span>Cargando...</span>
+                </div>
+                
+               <!--Here we will show the edit or new form for saving and updating universities-->               
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <button type="submit" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+                <button style="float:left;" type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary" >Guardar</button>
+                <div style="clear:both;"></div>
             </div>
+            }
         </div>
     </div>
 </div>

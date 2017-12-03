@@ -16,11 +16,11 @@ else
 {
     <br /><br />
     <h3>Universidades</h3><br />
-    <button data-toggle="modal" data-target="#university-modal" class="btn btn-success btn-sm">
+    <button data-toggle="modal" data-target="#university-modal" class="btn btn-success btn-sm add-university">
         <span class="glyphicon glyphicon-plus"></span>
         Agregar universidad
     </button>
-    <table class="table ">
+    <table class="table table-university">
         <thead>
             <tr>
                 <th>No.</th>
@@ -38,13 +38,13 @@ else
                     <td>@universidad.NombreUniversidad</td>
                     <td>@universidad.estatus</td>
                     <td>
-                        <button class="btn btn-default btn-xs">
+                        <button data-id-uni="@universidad.id_universidad" class="btn btn-default btn-xs edit-university">
                             <span class="glyphicon glyphicon-pencil"></span>
                             Editar
                         </button>
                     </td>
                     <td>
-                        <button class="btn btn-danger btn-xs">
+                        <button data-id-uni="@universidad.id_universidad" class="btn btn-danger btn-xs delete-university">
                             <span class="glyphicon glyphicon-trash"></span>
                             Eliminar
                         </button>
@@ -58,3 +58,7 @@ else
 <!-- Modal for partial Views -->
 @Html.Partial("_partials/_AddUniversity")
 
+
+@section scripts{
+    <script src="~/Areas/Administrator/Content/js/Universidades.js"></script>
+}
