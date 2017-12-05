@@ -15,7 +15,7 @@ $(function () {
         try {
 
             $.ajax({
-                url:  'nueva',
+                url:  'http://localhost:64954/Administrator/universidades/nueva',
                 type: 'post',
                 cache: false,
                 data: {},
@@ -35,6 +35,7 @@ $(function () {
     });
     //---------------------------------------------
 
+    //Delete university. It only disable the record.
     $(".table-university").on("click", ".delete-university", function () {
         if (confirm("¿Realmente desea eliminar la Universidad?"))
         {
@@ -43,11 +44,12 @@ $(function () {
                 var self = $(this);
 
                 $.ajax({
-                    url: 'delete?id=' + self.attr('data-id-uni'),
+                    url: 'http://localhost:64954/Administrator/universidades/delete?id=' + self.attr('data-id-uni'),
                     type: 'post',
                     dataType: 'json',
                     success: function (response) {
                         var request = JSON.parse(response);
+                        console.log(console.response);
                     },
                     error: function (error) {
                         console.log("An error has ocurred " + error);
@@ -64,17 +66,20 @@ $(function () {
     });
    //---------------------------------------------
 
+    //show edit form for university.
     $(".table-university").on("click", ".edit-university", function () {
         try {
 
             var self = $(this);
 
             $.ajax({
-                url: 'edit?id=' + self.attr('data-id-uni'),
+                url: 'http://localhost:64954/Administrator/universidades/edit?id=' + self.attr('data-id-uni'),
                 type: 'post',
-                dataType: 'json',
+                dataType: 'html',
+                data:{},
+                cache: false,
                 success: function (response) {
-                    var request = JSON.parse(response);
+                    $("#form-container").html(response);
                 },
                 error: function (error) {
                     console.log("An error has ocurred " + error);

@@ -5,6 +5,7 @@
 @Html.AntiForgeryToken()
 
 <div class="form-group">
+    @Html.HiddenFor(m => m.id_universidad)
     @Html.LabelFor(m => m.nombreUniversidad)
     @Html.TextBoxFor(m => m.nombreUniversidad, new {@class = "form-control", @autofocus = "true", @placeholder = "Ingresa el nombre de universidad..."})
     @Html.ValidationMessageFor(m => m.nombreUniversidad)

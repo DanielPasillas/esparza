@@ -4,6 +4,7 @@ using System.Linq;
 using grupoesparza.Models;
 using System.Web;
 using System.Web.Mvc;
+using grupoesparza.Areas.Administrator.Models;
 
 namespace grupoesparza.Areas.Administrator.Controllers
 {
@@ -33,12 +34,14 @@ namespace grupoesparza.Areas.Administrator.Controllers
         [ActionName("edit")]
         public ActionResult EditUniversidad(int id)
         {
-            var universidad = _dbContext.universidades.FirstOrDefault(m => m.id_universidad == idUniversidad);
+            var universidad = _dbContext.universidades.FirstOrDefault(m => m.id_universidad == id);
 
             if (universidad == null)
                 return Content("University does not exist");
 
-            return PartialView("_FormUniversities", universidad);
+            Universidades uniModel = new Universidades(universidad); 
+
+            return PartialView("_FormUniversities", uniModel);
         }
 
 
@@ -67,7 +70,7 @@ namespace grupoesparza.Areas.Administrator.Controllers
 
                 }
 
-                return RedirectToAction("Index");
+                return View("Index");
             }
 
             return View("Index", ModelState);
