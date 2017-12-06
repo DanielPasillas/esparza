@@ -6,53 +6,55 @@
 }
 
 <br /><br />
-<h3>Carreras</h3><br />
-<button data-toggle="modal" data-target="#carrera-modal" class="btn btn-success btn-sm add-carrera">
-    <span class="glyphicon glyphicon-plus"></span>
-    Agregar carrera
-</button>
-@if (!Model.Any())
-{
-    <div class="alert alert-warning">
-        No se encontraron carreras.
-    </div>
-}
-else
-{
-    <table class="table table-university">
-        <thead>
-            <tr>
-                <th>No.</th>
-                <th>Universidad</th>
-                <th>Carrera</th>
-                <th>Generación</th>
-                <th>Editar</th>
-                <th>Eliminar</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var carreras in Model)
-            {
+<div class="container">
+    <h3>Carreras</h3><hr />
+    <a href="@Url.Action("nueva", "carreras")" class="btn btn-success btn-sm">
+        <span class="glyphicon glyphicon-plus"></span>
+        Agregar carrera
+    </a>
+    @if (!Model.Any())
+    {
+        <div class="alert alert-warning">
+            No se encontraron carreras.
+        </div>
+    }
+    else
+    {
+        <table class="table table-university">
+            <thead>
                 <tr>
-                    <td>@carreras.id_carrera</td>
-                    <td>@carreras.Universidad</td>
-                    <td>@carreras.Carrera</td>
-                    <td>@carreras.Generacion</td>
-                    <td>
-                        <button data-id-uni="@carreras.id_carrera" data-toggle="modal" data-target="#carrera-modal" class="btn btn-default btn-xs edit-carrera">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                            Editar
-                        </button>
-                    </td>
-                    <td>
-                        <button data-id-uni="@carreras.id_carrera" class="btn btn-danger btn-xs delete-carrera">
-                            <span class="glyphicon glyphicon-trash"></span>
-                            Eliminar
-                        </button>
-                    </td>
+                    <th>No.</th>
+                    <th>Universidad</th>
+                    <th>Carrera</th>
+                    <th>Generación</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
                 </tr>
-            }
-        </tbody>
-    </table>
-}
+            </thead>
+            <tbody>
+                @foreach (var carreras in Model)
+                {
+                    <tr>
+                        <td>@carreras.id_carrera</td>
+                        <td>@carreras.Universidad</td>
+                        <td>@carreras.Carrera</td>
+                        <td>@carreras.Generacion</td>
+                        <td>
+                            <button data-id-uni="@carreras.id_carrera" data-toggle="modal" data-target="#carrera-modal" class="btn btn-default btn-xs edit-carrera">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                Editar
+                            </button>
+                        </td>
+                        <td>
+                            <button data-id-uni="@carreras.id_carrera" class="btn btn-danger btn-xs delete-carrera">
+                                <span class="glyphicon glyphicon-trash"></span>
+                                Eliminar
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
 

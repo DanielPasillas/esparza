@@ -46,7 +46,7 @@ $(function () {
                 $.ajax({
                     url: 'http://localhost:64954/Administrator/universidades/delete?id=' + self.attr('data-id-uni'),
                     type: 'post',
-                    dataType: 'json',
+                    cache: false,
                     success: function (response) {
                         var request = JSON.parse(response);
                         console.log(console.response);

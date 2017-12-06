@@ -15,7 +15,7 @@ namespace grupoesparza.Areas.Administrator.Models
         public string nombreUniversidad { get; set; }
 
         public Universidades(universidades _universidades)
-        {
+        {   
             this.nombreUniversidad = _universidades.NombreUniversidad;
             estatus = _universidades.estatus;
         }

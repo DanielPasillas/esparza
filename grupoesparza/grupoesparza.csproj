@@ -322,6 +322,7 @@
     <Content Include="Areas\Administrator\Views\Universidades\_FormUniversities.cshtml" />
     <Content Include="Areas\Administrator\Views\Home\Index.cshtml" />
     <Content Include="Areas\Administrator\Views\Carreras\Index.cshtml" />
+    <Content Include="Areas\Administrator\Views\Carreras\Nueva.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

@@ -28,12 +28,16 @@ namespace grupoesparza.Areas.Administrator.Controllers
         [ActionName("nueva")]
         public ActionResult Nueva()
         {
+            ViewBag.Edit = false;
             return PartialView("_FormUniversities");
         }
 
         [ActionName("edit")]
         public ActionResult EditUniversidad(int id)
         {
+
+            ViewBag.Edit = true;
+
             var universidad = _dbContext.universidades.FirstOrDefault(m => m.id_universidad == id);
 
             if (universidad == null)
