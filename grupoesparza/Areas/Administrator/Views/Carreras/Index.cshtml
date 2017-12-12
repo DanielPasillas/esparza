@@ -28,6 +28,7 @@
                     <th>Carrera</th>
                     <th>Generación</th>
                     <th>Editar</th>
+                    <th>Ver</th>
                     <th>Eliminar</th>
                 </tr>
             </thead>
@@ -40,16 +41,22 @@
                         <td>@carreras.Carrera</td>
                         <td>@carreras.Generacion</td>
                         <td>
-                            <button data-id-uni="@carreras.id_carrera" data-toggle="modal" data-target="#carrera-modal" class="btn btn-default btn-xs edit-carrera">
+                            <a href="@Url.Action("editar","carreras", new {id = carreras.id_carrera})" class="btn btn-primary btn-xs edit-carrera">
                                 <span class="glyphicon glyphicon-pencil"></span>
                                 Editar
-                            </button>
+                            </a>
                         </td>
                         <td>
-                            <button data-id-uni="@carreras.id_carrera" class="btn btn-danger btn-xs delete-carrera">
+                            <a role="button" data-toggle="modal" data-target="#modal-target" href="#detail" data-access-detail="@carreras.id_carrera" class="btn btn-default btn-xs detail-carreer">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                Ver
+                            </a>
+                        </td>
+                        <td>
+                            <a role="button" href="#delete" data-access-delete="@carreras.id_carrera" class="btn btn-danger btn-xs delete-carrera">
                                 <span class="glyphicon glyphicon-trash"></span>
                                 Eliminar
-                            </button>
+                            </a>
                         </td>
                     </tr>
                 }
@@ -58,3 +65,8 @@
     }
 </div>
 
+@Html.Partial("~/Areas/Administrator/Views/modal.cshtml")
+
+@section scripts{
+    @Scripts.Render("~/bundles/carreras")
+}

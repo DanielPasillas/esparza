@@ -242,6 +242,7 @@
     <Compile Include="utilerias\Utilerias.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Administrator\Content\js\Carreras.js" />
     <Content Include="Areas\Administrator\Content\js\Universidades.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -323,6 +324,9 @@
     <Content Include="Areas\Administrator\Views\Home\Index.cshtml" />
     <Content Include="Areas\Administrator\Views\Carreras\Index.cshtml" />
     <Content Include="Areas\Administrator\Views\Carreras\Nueva.cshtml" />
+    <Content Include="Areas\Administrator\Views\Carreras\Editar.cshtml" />
+    <Content Include="Areas\Administrator\Views\Carreras\_Detalle.cshtml" />
+    <Content Include="Areas\Administrator\Views\modal.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

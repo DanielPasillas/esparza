@@ -37,6 +37,10 @@ namespace grupoesparza
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            //Bundle Carreras ADMIN.
+            bundles.Add(new ScriptBundle("~/bundles/carreras").Include(
+                     "~/Areas/Administrator/Content/js/Carreras.js"));
+
 
 
             #region 

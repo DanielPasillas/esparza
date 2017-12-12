@@ -1,0 +1,22 @@
+﻿@model grupoesparza.Areas.Administrator.Models.Carreras
+
+@{
+//Partial view for detail.
+}
+
+<div class="container">
+    <h3>Detalle - <i>@Model.Carrera</i></h3><hr />
+    <div class="form-group">
+        @Html.Label("Universidad")
+        @Html.DropDownList("id_universidad", ViewBag.Universidades as SelectList, new { @class = "form-control", @disabled = "disabled" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Carrera)
+        @Html.TextBoxFor(m => m.Carrera, new { @class = "form-control", @placeholder = "Ingresa el nombre de la carrera...", @disabled = "disabled" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Generacion)
+        @Html.TextBoxFor(m => m.Generacion, new { @class = "form-control", @placeholder = "Ingresa la generación...", @disabled = "disabled" })
+    </div>
+</div>
+
