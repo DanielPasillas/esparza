@@ -24,21 +24,35 @@ function menuPedido()
             cache: false,
             contentType: "application/json; charset=utf-8",
             dataType: 'json',
-            async: false,
             success: function (content) {
                 $(".list-pedido").html('');
 
-                var checkAjax = null;
                 $.each(content, function (index, obj) {
 
                     //set university name
-                    $(".list-pedido").append('<li><a href="#" >'+obj.NombreUniversidad+'</a></li>');
-                    //var id_uni = obj.id_universidad;
-                    v
+                    $(".list-pedido").append('<li><a href="#" >' + obj.NombreUniversidad +'</a><ul class="class="rd-navbar-dropdown item-carreer-'+obj.id_universidad+'"></ul></li>');
+
+                    //Get Carreers.
+                    $.ajax({
+                        url: 'http://localhost:64954/administrator/resources/getCarreersbyuniversity/' + obj.id_universidad,
+                        type: 'post',
+                        cache: false,
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        success: function (response) {
+                            $.each(response, function (index, cObj) {
+
+                            });
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.log("An error has ocurred while fetching the carreers data: " + jqXHR.status);
+                        }
+                    });
+                    
                 });
             },
-            error: function (error) {
-                console.log("An error has ocurred while fetching the universities data. " + error.status);
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log("An error has ocurred while fetching the universities data: " + jqXHR.status);
             }
         });
     } catch (e) {

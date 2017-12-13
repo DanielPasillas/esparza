@@ -28,8 +28,8 @@ $(function () {
                     //console.log(response);
                     $(".modal-container").html(response);
                 },
-                error: function (error) {
-                    console.log("Error while fetching the data. " + error.status);
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log("Error while fetching the data. " + jqXHR.status);
                 }
             });
         } catch (e) {
@@ -65,8 +65,8 @@ $(function () {
                             alert(response.msg);
                         }
                     },
-                    error: function () {
-
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        onsole.log("Error while deleting the carreer. " + jqXHR.status);
                     }
                 });
             } catch (e) {

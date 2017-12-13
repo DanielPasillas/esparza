@@ -23,7 +23,9 @@ namespace grupoesparza.Areas.Administrator.Controllers
         [HttpPost]
         public JsonResult GetUniversities()
         {
-            var _universities = _dbContext.universidades.Where(m => m.estatus == 1).Select(m => new {m.id_universidad, m.NombreUniversidad}).ToList();
+            var _universities = _dbContext.universidades
+                .Where(m => m.estatus == 1)
+                .Select(m => new {m.id_universidad, m.NombreUniversidad}).ToList();
             return Json(_universities);
         }
         //----------------------------------------------------------
@@ -31,8 +33,12 @@ namespace grupoesparza.Areas.Administrator.Controllers
         [HttpPost]
         public JsonResult GetCarreersByUniversity(long id)
         {
-            var _universities = _dbContext.carreras.Where(m => m.id_universidad == id).ToList();
-            return Json(new { carreers = _universities }, JsonRequestBehavior.AllowGet);
+            var _carreras = _dbContext.carreras
+                .Where(m => m.id_universidad == id)
+                .Where(m => m.estatus == 1)
+                .Select(m => new { m.id_carrera, m.NombreCarrera }).ToList();
+
+            return Json(_carreras);
         }
         //----------------------------------------------------------
 
