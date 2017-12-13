@@ -66,11 +66,12 @@
                                     <!--Pedidos-->
                                     <li>
                                         <a href="#">Pedidos</a>
-                                        <ul class="rd-navbar-dropdown">
-                                            <li><a href="@Url.Action("bodas", "eventos")">Bodas</a></li>
+                                        <ul class="rd-navbar-dropdown list-pedido">
+                                            <li><a href="#">...</a></li>
+                                            <!--li><a href="@Url.Action("bodas", "eventos")">Bodas</a></!--li>
                                             <li><a href="@Url.Action("xv-anos", "eventos")">XV años</a></li>
                                             <li><a href="@Url.Action("bautizos", "eventos")">Bautizos</a></li>
-                                            <li><a href="@Url.Action("primera-comunion", "eventos")">Primera comunión</a></li>
+                                            <li><a href="@Url.Action("primera-comunion", "eventos")">Primera comunión</a></li-->
                                         </ul>
                                     </li>
 
@@ -120,6 +121,7 @@
         @Scripts.Render("~/bundles/jqueryval")
         @Scripts.Render("~/bundles/bootstrap")
         @Scripts.Render("~/bundles/javascript")
+        @Scripts.Render("~/bundles/_layoutjs")
         @RenderSection("scripts", required: false)
 
 </body>

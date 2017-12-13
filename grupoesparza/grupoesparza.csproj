@@ -166,6 +166,7 @@
     <Compile Include="Areas\Administrator\Controllers\AccountController.cs" />
     <Compile Include="Areas\Administrator\Controllers\CarrerasController.cs" />
     <Compile Include="Areas\Administrator\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Administrator\Controllers\ResourcesController.cs" />
     <Compile Include="Areas\Administrator\Controllers\UniversidadesController.cs" />
     <Compile Include="Areas\Administrator\Models\Account.cs" />
     <Compile Include="Areas\Administrator\Models\Carreras.cs" />
@@ -244,6 +245,7 @@
   <ItemGroup>
     <Content Include="Areas\Administrator\Content\js\Carreras.js" />
     <Content Include="Areas\Administrator\Content\js\Universidades.js" />
+    <Content Include="Areas\Administrator\Content\js\_layout.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\lightgallery.min.css" />
@@ -375,6 +377,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administrator\Content\css\" />
+    <Folder Include="Areas\Administrator\Views\Resources\" />
     <Folder Include="Views\Admin\" />
   </ItemGroup>
   <ItemGroup>

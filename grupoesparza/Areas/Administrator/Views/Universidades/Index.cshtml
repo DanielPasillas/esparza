@@ -8,54 +8,56 @@
 
 
 <br /><br />
-<h3>Universidades</h3><br />
-<button data-toggle="modal" data-target="#university-modal" class="btn btn-success btn-sm add-university">
-    <span class="glyphicon glyphicon-plus"></span>
-    Agregar universidad
-</button>
-@if(!Model.Any())
-{
-    <div class="alert alert-warning">
-        No se encontraron universidades.
-    </div>
-}
-else
-{
-    
-    <table class="table table-university">
-        <thead>
-            <tr>
-                <th>No.</th>
-                <th>Universidad</th>
-                <th>Estatus</th>
-                <th>Editar</th>
-                <th>Eliminar</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var universidad in Model)
-            {
+<div class="container">
+    <h3>Universidades</h3><br />
+    <button data-toggle="modal" data-target="#university-modal" class="btn btn-success btn-sm add-university">
+        <span class="glyphicon glyphicon-plus"></span>
+        Agregar universidad
+    </button>
+    @if (!Model.Any())
+    {
+        <div class="alert alert-warning">
+            No se encontraron universidades.
+        </div>
+    }
+    else
+    {
+
+        <table class="table table-university">
+            <thead>
                 <tr>
-                    <td>@universidad.id_universidad</td>
-                    <td>@universidad.NombreUniversidad</td>
-                    <td>@universidad.estatus</td>
-                    <td>
-                        <button data-id-uni="@universidad.id_universidad"  data-toggle="modal" data-target="#university-modal" class="btn btn-default btn-xs edit-university">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                            Editar
-                        </button>
-                    </td>
-                    <td>
-                        <button data-id-uni="@universidad.id_universidad" class="btn btn-danger btn-xs delete-university">
-                            <span class="glyphicon glyphicon-trash"></span>
-                            Eliminar
-                        </button>
-                    </td>
+                    <th>No.</th>
+                    <th>Universidad</th>
+                    <th>Estatus</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
                 </tr>
-            }
-        </tbody>
-    </table>    
-}
+            </thead>
+            <tbody>
+                @foreach (var universidad in Model)
+                {
+                    <tr>
+                        <td>@universidad.id_universidad</td>
+                        <td>@universidad.NombreUniversidad</td>
+                        <td>@universidad.estatus</td>
+                        <td>
+                            <button data-id-uni="@universidad.id_universidad" data-toggle="modal" data-target="#university-modal" class="btn btn-default btn-xs edit-university">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                Editar
+                            </button>
+                        </td>
+                        <td>
+                            <button data-id-uni="@universidad.id_universidad" class="btn btn-danger btn-xs delete-university">
+                                <span class="glyphicon glyphicon-trash"></span>
+                                Eliminar
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
 
 <!-- Modal for partial Views -->
 @Html.Partial("_partials/_AddUniversity")

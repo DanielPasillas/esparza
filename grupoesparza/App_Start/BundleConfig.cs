@@ -41,8 +41,9 @@ namespace grupoesparza
             bundles.Add(new ScriptBundle("~/bundles/carreras").Include(
                      "~/Areas/Administrator/Content/js/Carreras.js"));
 
-
-
+            //Bundle Main _Layout - Administrator.
+            bundles.Add(new ScriptBundle("~/bundles/_layoutjs").Include(
+                                 "~/Areas/Administrator/Content/js/_layout.js"));
             #region 
             //CSS SECTION
             bundles.Add(new StyleBundle("~/Content/css").Include(
