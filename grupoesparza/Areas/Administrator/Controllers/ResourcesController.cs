@@ -45,7 +45,8 @@ namespace grupoesparza.Areas.Administrator.Controllers
         [HttpPost]
         public JsonResult GetGroupsByCarreer(long id)
         {
-            var _universities = _dbContext.grupos.Where(m => m.id_carrera == id).ToList();
+            var _universities = _dbContext.grupos.Where(m => m.id_carrera == id)
+                .Where(m => m.estatus == 1).Select(m => new {m.id_grupo, m.grado, m.grupo }).ToList();
             return Json(new { groups = _universities }, JsonRequestBehavior.AllowGet);
         }
         //----------------------------------------------------------

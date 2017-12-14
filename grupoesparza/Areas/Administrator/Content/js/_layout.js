@@ -17,11 +17,12 @@ function menuPedido()
 {
     try {
 
-        //fetch universities.
+        //Ajax call for universities.
         $.ajax({
             url: 'http://localhost:64954/administrator/resources/getuniversities',
             type: 'post',
             cache: false,
+            async: false,
             contentType: "application/json; charset=utf-8",
             dataType: 'json',
             success: function (content) {
@@ -30,17 +31,37 @@ function menuPedido()
                 $.each(content, function (index, obj) {
 
                     //set university name
-                    $(".list-pedido").append('<li><a href="#" >' + obj.NombreUniversidad +'</a><ul class="class="rd-navbar-dropdown item-carreer-'+obj.id_universidad+'"></ul></li>');
+                    $(".list-pedido").append('<li><a href="#" >' + obj.NombreUniversidad +'</a><ul class="rd-navbar-dropdown item-carreer-'+obj.id_universidad+'"></ul></li>');
 
-                    //Get Carreers.
+                    //Ajax call for carreers.
                     $.ajax({
                         url: 'http://localhost:64954/administrator/resources/getCarreersbyuniversity/' + obj.id_universidad,
                         type: 'post',
                         cache: false,
+                        async: false,
                         contentType: 'application/json; charset=utf-8',
                         dataType: 'json',
                         success: function (response) {
                             $.each(response, function (index, cObj) {
+
+                                //Fill out the UN component with the CARR items.
+                                $(".item-carreer-" + obj.id_universidad).append('<li><a href="#">' + cObj.NombreCarrera + '</a><ul class="rd-navbar-dropdown item-groups"></ul></li>');
+
+                                //Ajax call for groups.
+                                $.ajax({
+                                    url: 'http://localhost:64954/administrator/resources/getgroupsbycarreer/' + cObj.id_carrera,
+                                    type: 'post',
+                                    ache: false,
+                                    async: false,
+                                    contentType: 'application/json; charset=utf-8',
+                                    dataType: 'json',
+                                    success: function (data) {
+
+                                    },
+                                    error: function (jqXHR, textStatus, errorThrown) {
+                                        console.log("An error has ocurred while fetching the groups data: " + jqXHR.status);
+                                    }
+                                });
 
                             });
                         },
