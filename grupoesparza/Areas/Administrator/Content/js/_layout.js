@@ -42,10 +42,10 @@ function menuPedido()
                         contentType: 'application/json; charset=utf-8',
                         dataType: 'json',
                         success: function (response) {
-                            $.each(response, function (index, cObj) {
+                            $.each(response, function (index, cObj) { //cObj => carreers Object
 
                                 //Fill out the UN component with the CARR items.
-                                $(".item-carreer-" + obj.id_universidad).append('<li><a href="#">' + cObj.NombreCarrera + '</a><ul class="rd-navbar-dropdown item-groups"></ul></li>');
+                                $(".item-carreer-" + obj.id_universidad).append('<li><a href="#">' + cObj.NombreCarrera + '</a><ul class="rd-navbar-dropdown item-groups-' + cObj.id_carrera + '"></ul></li>');
 
                                 //Ajax call for groups.
                                 $.ajax({
@@ -56,7 +56,9 @@ function menuPedido()
                                     contentType: 'application/json; charset=utf-8',
                                     dataType: 'json',
                                     success: function (data) {
-
+                                        $.each(data, function (index, gObj) { //gObj => groups Object.
+                                            $(".item-groups-" + cObj.id_carrera).append('<li>' + gObj.grado + '-' + gObj.grupo + '</li>');
+                                        });
                                     },
                                     error: function (jqXHR, textStatus, errorThrown) {
                                         console.log("An error has ocurred while fetching the groups data: " + jqXHR.status);
