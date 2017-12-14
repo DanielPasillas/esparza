@@ -75,7 +75,7 @@ function menuPedido()
                 });
             },
             error: function (jqXHR, textStatus, errorThrown) {
-                console.log("An error has ocurred while fetching the universities data: " + jqXHR.status);
+                console.log("An error has ocurred while fetching. the universities data: " + jqXHR.status);
             }
         });
     } catch (e) {
