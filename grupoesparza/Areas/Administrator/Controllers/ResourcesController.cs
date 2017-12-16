@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 
@@ -21,6 +22,7 @@ namespace grupoesparza.Areas.Administrator.Controllers
 
         // GET: Administrator/Resources
         [HttpPost]
+        [OutputCache(Duration = 60, VaryByParam = "none")]
         public JsonResult GetUniversities()
         {
             var _universities = _dbContext.universidades
@@ -31,8 +33,10 @@ namespace grupoesparza.Areas.Administrator.Controllers
         //----------------------------------------------------------
 
         [HttpPost]
+        [OutputCache(Duration = 60, VaryByParam = "none")]
         public JsonResult GetCarreersByUniversity(long id)
         {
+            Thread.Sleep(1000);
             var _carreras = _dbContext.carreras
                 .Where(m => m.id_universidad == id)
                 .Where(m => m.estatus == 1)
@@ -43,8 +47,10 @@ namespace grupoesparza.Areas.Administrator.Controllers
         //----------------------------------------------------------
 
         [HttpPost]
+        [OutputCache(Duration = 60, VaryByParam = "none")]
         public JsonResult GetGroupsByCarreer(long id)
         {
+            Thread.Sleep(1000);
             var _universities = _dbContext.grupos.Where(m => m.id_carrera == id)
                 .Where(m => m.estatus == 1).Select(m => new {m.id_grupo, m.grado, m.grupo }).ToList();
             return Json(new { groups = _universities }, JsonRequestBehavior.AllowGet);
