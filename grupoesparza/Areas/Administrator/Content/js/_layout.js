@@ -8,10 +8,8 @@
 
 'use strict';
 
-$(document).ready(function () {
-    setTimeout(function () {
-        menuPedido();
-    }, 2000);
+$(window).load(function () {
+    menuPedido();
 });
 
 

@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace grupoesparza.Areas.Administrator.Controllers
 {
@@ -19,9 +21,9 @@ namespace grupoesparza.Areas.Administrator.Controllers
         //----------------------------------------------------------
 
         // GET: Administrator/Carreras
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            var _carreras = (from c in _dbContext.carreras
+            var _carreras = await (from c in _dbContext.carreras
                              join p in _dbContext.universidades
                              on c.id_universidad equals p.id_universidad
                              where c.estatus == 1
@@ -31,33 +33,33 @@ namespace grupoesparza.Areas.Administrator.Controllers
                                  Universidad = p.NombreUniversidad,
                                  Carrera = c.NombreCarrera,
                                  Generacion = c.Generacion
-                             });
+                             }).ToListAsync();
 
             return View(_carreras);
         }
         //----------------------------------------------------------
 
         [ActionName("nueva")]
-        public ActionResult Nueva()
+        public async Task<ActionResult> Nueva()
         {
 
-            var list = new SelectList(_dbContext.universidades.Where(m => m.estatus == 1).ToList(), "id_universidad", "NombreUniversidad");
+            var list = new SelectList(await _dbContext.universidades.Where(m => m.estatus == 1).ToListAsync(), "id_universidad", "NombreUniversidad");
             ViewBag.Universidades = list;
             return View();
         }
         //----------------------------------------------------------
 
         [ActionName("editar")]
-        public ActionResult Editar(long id)
+        public async Task<ActionResult> Editar(long id)
         {
 
-            var carrera = _dbContext.carreras.FirstOrDefault(m => m.id_carrera == id);
+            var carrera = await _dbContext.carreras.FirstOrDefaultAsync(m => m.id_carrera == id);
 
             if (carrera == null)
                 return Content("The carreer does not exist.");
 
             //List for universities.
-            var list = new SelectList(_dbContext.universidades.Where(m => m.estatus == 1).ToList(), "id_universidad", "NombreUniversidad");
+            var list = new SelectList(await _dbContext.universidades.Where(m => m.estatus == 1).ToListAsync(), "id_universidad", "NombreUniversidad");
             ViewBag.Universidades = list;
 
             Carreras _carrera = new Carreras()
@@ -106,7 +108,7 @@ namespace grupoesparza.Areas.Administrator.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Save(Carreras _carreras)
+        public async Task<ActionResult> Save(Carreras _carreras)
         {
             if(ModelState.IsValid)
             {
@@ -122,9 +124,9 @@ namespace grupoesparza.Areas.Administrator.Controllers
 
                     try
                     {
-                        _dbContext.carreras.Add(carrera);
-                        _dbContext.SaveChanges();
-                        return RedirectToAction("editar", "carreras", new { id = carrera.id_carrera});
+                       _dbContext.carreras.Add(carrera);
+                       await _dbContext.SaveChangesAsync();
+                       return RedirectToAction("editar", "carreras", new { id = carrera.id_carrera});
                     }
                     catch (Exception)
                     {
@@ -135,7 +137,7 @@ namespace grupoesparza.Areas.Administrator.Controllers
                 }
                 else                         //Actualización
                 {
-                    var carrera = _dbContext.carreras.FirstOrDefault(m => m.id_carrera == _carreras.id_carrera);
+                    var carrera = await _dbContext.carreras.FirstOrDefaultAsync(m => m.id_carrera == _carreras.id_carrera);
 
                     if (carrera == null)
                         return Content("The carreer does not exist");
@@ -144,7 +146,7 @@ namespace grupoesparza.Areas.Administrator.Controllers
                     carrera.NombreCarrera  = _carreras.Carrera;
                     carrera.Generacion     = _carreras.Generacion;
 
-                    _dbContext.SaveChanges();
+                    await _dbContext.SaveChangesAsync();
 
                     return RedirectToAction("Index");
                 }
@@ -156,9 +158,9 @@ namespace grupoesparza.Areas.Administrator.Controllers
         //----------------------------------------------------------
 
         [HttpPost]
-        public JsonResult Delete(long id)
+        public async Task<JsonResult> Delete(long id)
         {
-            var carrera = _dbContext.carreras.FirstOrDefault(m => m.id_carrera == id);
+            var carrera = await _dbContext.carreras.FirstOrDefaultAsync(m => m.id_carrera == id);
 
             if(carrera == null)
                 return Json(new { status = false, msg = "The carreer does not exist." }, JsonRequestBehavior.AllowGet);
@@ -166,7 +168,7 @@ namespace grupoesparza.Areas.Administrator.Controllers
             try
             {
                 carrera.estatus = 0;
-                _dbContext.SaveChanges();
+                await _dbContext.SaveChangesAsync();
 
                 return Json(new { status = true, msg = "La carrera se deshabilitó correctamente." }, JsonRequestBehavior.AllowGet);
             }
