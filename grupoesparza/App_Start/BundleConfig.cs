@@ -44,7 +44,14 @@ namespace grupoesparza
             //Bundle Main _Layout - Administrator.
             bundles.Add(new ScriptBundle("~/bundles/_layoutjs").Include(
                                  "~/Areas/Administrator/Content/js/_layout.js"));
+
+            //Bundle Main _Layout - Administrator.
+            bundles.Add(new ScriptBundle("~/bundles/registro").Include(
+                                 "~/Content/js/client/Registro.js"));
             #region 
+
+
+
             //CSS SECTION
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

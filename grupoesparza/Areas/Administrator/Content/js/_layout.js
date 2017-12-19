@@ -42,7 +42,7 @@ function menuPedido()
                             $.each(response, function (index, cObj) { //cObj => carreers Object
 
                                 //Fill out the UN component with the CARR items.
-                                $("#item-carreer-" + obj.id_universidad).append('<li><a href="#">' + cObj.NombreCarrera + '</a><ul id="item-groups-' + cObj.id_carrera + '" class="rd-navbar-dropdown "></ul></li>');
+                                $("#item-carreer-" + obj.id_universidad).append('<li><a href="#">' + cObj.NombreCarrera + '</a><ul id="item-groups-' + cObj.id_carrera + '" class="rd-navbar-dropdown"></ul></li>');
 
                                 //Ajax call for groups.
                                 $.ajax({

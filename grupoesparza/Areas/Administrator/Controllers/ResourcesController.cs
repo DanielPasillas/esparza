@@ -36,13 +36,13 @@ namespace grupoesparza.Areas.Administrator.Controllers
 
         [HttpPost]
         [OutputCache(Duration = 60, VaryByParam = "none")]
-        public async Task<JsonResult> GetCarreersByUniversity(long id)
+        public JsonResult GetCarreersByUniversity(long id)
         {
             Thread.Sleep(1000);
-            var _carreras = await _dbContext.carreras
+            var _carreras = _dbContext.carreras
                 .Where(m => m.id_universidad == id)
                 .Where(m => m.estatus == 1)
-                .Select(m => new { m.id_carrera, m.NombreCarrera }).ToListAsync();
+                .Select(m => new { m.id_carrera, m.NombreCarrera }).ToList();
 
             return Json(_carreras);
         }

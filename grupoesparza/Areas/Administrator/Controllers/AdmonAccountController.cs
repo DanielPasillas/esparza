@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace grupoesparza.Areas.Administrator.Controllers
 {
-    public class AccountController : Controller
+    public class AdmonAccountController : Controller
     {
 
         [Authorize]

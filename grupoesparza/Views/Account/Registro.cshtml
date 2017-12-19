@@ -1,0 +1,87 @@
+﻿@model grupoesparza.Models.Register
+
+@{
+    ViewBag.Title = "Registro";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<div class="container">
+    <h3>Registro</h3><hr />
+    <div class="row">
+        <div class="col-md-4">
+            @using (Html.BeginForm("register", "account", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <!-- Nombre usuario-->
+                <div class="form-group">
+                    @Html.LabelFor(m => m.NombreUsuario)
+                    @Html.TextBoxFor(m => m.NombreUsuario, new { @class = "form-control", @autofocus = "true", @placeholder = "Ingresa tu nombre..." })
+                    @Html.ValidationMessageFor(m => m.NombreUsuario)
+                </div>
+
+                <!-- Apellidos usuario-->
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ApellidosUsuario)
+                    @Html.TextBoxFor(m => m.ApellidosUsuario, new { @class = "form-control", @placeholder = "Ingresa tus apellidos.." })
+                    @Html.ValidationMessageFor(m => m.ApellidosUsuario)
+                </div>
+
+                <!-- Teléfono usuario-->
+                <div class="form-group">
+                    @Html.LabelFor(m => m.TelefonoUsuario)
+                    @Html.TextBoxFor(m => m.TelefonoUsuario, new { @class = "form-control", @placeholder = "Escribe tu teléfono..." })
+                    @Html.ValidationMessageFor(m => m.TelefonoUsuario)
+                </div>
+
+                <!-- Universidades -->
+                <div class="form-group">
+                    <label for="universidades">Universidad</label>
+                    <select id="universidades" name="idUniversidad" class="form-control dropdown-university" required>
+                        <option value="value">-- Selecciona tu universidad --</option>
+                    </select>
+                </div>
+
+                <!-- Carreras -->
+                <div class="form-group">
+                    <label for="carreras">Carrera</label>
+                    <select id="carreras" name="idCarrera" class="form-control dropdown-carreer" required>
+                        <option value="value">-- Selecciona tu carrera --</option>
+                    </select>
+                </div>
+
+                <!-- Grupo -->
+                <div class="form-group">
+                    <label for="grupo">Grupo</label>
+                    <select id="grupo" name="idGrupo" class="form-control dropdown-group" required>
+                        <option value="value">-- Selecciona tu grupo --</option>
+                    </select>
+                </div>
+
+                <!-- Email usuario-->
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email)
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Ingresa tu E-mail" })
+                    @Html.ValidationMessageFor(m => m.Email)
+                </div>
+
+                <!-- Sender Button-->
+                <div class="form-group">
+                   <button style="width:100%;" type="submit" class="btn btn-success">
+                       Registrar
+                   </button>
+                </div>
+            }
+        </div>
+        <div class="col-md-8">
+            Gallery
+        </div>
+
+    </div>
+</div>
+
+
+@section scripts {
+    @Scripts.Render("~/bundles/registro")
+}
