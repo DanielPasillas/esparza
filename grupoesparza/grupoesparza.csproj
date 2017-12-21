@@ -46,8 +46,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
+    <Reference Include="AutoMapper, Version=4.1.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.1.0\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
@@ -66,6 +66,9 @@
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
@@ -299,15 +302,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AppRole.cs" />
+    <Compile Include="App_Start\AppUser.cs" />
+    <Compile Include="App_Start\AppUserManager.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\DbContext.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\MappingProfile.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Areas\Administrator\AdministratorAreaRegistration.cs" />
-    <Compile Include="Areas\Administrator\Controllers\AdmonAccountController.cs" />
+    <Compile Include="Areas\Administrator\Controllers\AdmonController.cs" />
     <Compile Include="Areas\Administrator\Controllers\CarrerasController.cs" />
-    <Compile Include="Areas\Administrator\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Administrator\Controllers\MainController.cs" />
     <Compile Include="Areas\Administrator\Controllers\ResourcesController.cs" />
     <Compile Include="Areas\Administrator\Controllers\UniversidadesController.cs" />
+    <Compile Include="Areas\Administrator\HandlerClasses\AuthAdmin.cs" />
     <Compile Include="Areas\Administrator\Models\Account.cs" />
     <Compile Include="Areas\Administrator\Models\Carreras.cs" />
     <Compile Include="Areas\Administrator\Models\Universidades.cs" />
@@ -315,6 +325,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EventosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PanelController.cs" />
     <Compile Include="Controllers\ServiciosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -402,6 +413,11 @@
     <Content Include="Content\img\intro-11.jpg" />
     <Content Include="Content\img\intro-12.jpg" />
     <Content Include="Content\img\contact-bg.jpg" />
+    <Content Include="Content\img\varias\emporio.jpg" />
+    <Content Include="Content\img\varias\grecia.jpg" />
+    <Content Include="Content\img\varias\miriam.jpg" />
+    <Content Include="Content\img\varias\zafari.jpg" />
+    <Content Include="Content\img\varias\zenca.jpg" />
     <Content Include="Content\js\animsition.min.js" />
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\core.min.js" />
@@ -444,6 +460,7 @@
     <Content Include="Content\fonts\lgd641.eot" />
     <Content Include="Content\fonts\lgd641.ttf" />
     <Content Include="Content\fonts\lgd641.woff" />
+    <Content Include="Views\Panel\Index.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
@@ -470,7 +487,7 @@
     <Content Include="Areas\Administrator\Views\web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Areas\Administrator\Views\Account\Login.cshtml" />
+    <Content Include="Areas\Administrator\Views\Admon\Login.cshtml" />
     <Content Include="Areas\Administrator\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Administrator\Views\Footer.cshtml" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
@@ -480,7 +497,7 @@
     <Content Include="Areas\Administrator\Views\Universidades\Index.cshtml" />
     <Content Include="Areas\Administrator\Views\Universidades\_partials\_AddUniversity.cshtml" />
     <Content Include="Areas\Administrator\Views\Universidades\_FormUniversities.cshtml" />
-    <Content Include="Areas\Administrator\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Administrator\Views\Main\Index.cshtml" />
     <Content Include="Areas\Administrator\Views\Carreras\Index.cshtml" />
     <Content Include="Areas\Administrator\Views\Carreras\Nueva.cshtml" />
     <Content Include="Areas\Administrator\Views\Carreras\Editar.cshtml" />

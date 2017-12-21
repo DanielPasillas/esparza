@@ -4,14 +4,16 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace grupoesparza.Areas.Administrator.Controllers
+namespace grupoesparza.Controllers
 {
-    public class HomeController : Controller
+    public class PanelController : Controller
     {
-        // GET: Administrator/Home
+        // GET: Panel
+        [Authorize]
         public ActionResult Index()
         {
             return View();
         }
+ 
     }
 }

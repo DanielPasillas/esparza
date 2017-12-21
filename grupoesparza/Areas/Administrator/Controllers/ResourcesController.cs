@@ -38,7 +38,6 @@ namespace grupoesparza.Areas.Administrator.Controllers
         [OutputCache(Duration = 60, VaryByParam = "none")]
         public JsonResult GetCarreersByUniversity(long id)
         {
-            Thread.Sleep(1000);
             var _carreras = _dbContext.carreras
                 .Where(m => m.id_universidad == id)
                 .Where(m => m.estatus == 1)
@@ -52,10 +51,9 @@ namespace grupoesparza.Areas.Administrator.Controllers
         [OutputCache(Duration = 60, VaryByParam = "none")]
         public async Task<JsonResult> GetGroupsByCarreer(long id)
         {
-            Thread.Sleep(1000);
-            var _universities = await _dbContext.grupos.Where(m => m.id_carrera == id)
+            var _grupos = await _dbContext.grupos.Where(m => m.id_carrera == id)
                 .Where(m => m.estatus == 1).Select(m => new {m.id_grupo, m.grado, m.grupo }).ToListAsync();
-            return Json(new { groups = _universities }, JsonRequestBehavior.AllowGet);
+            return Json(_grupos);
         }
         //----------------------------------------------------------
     }

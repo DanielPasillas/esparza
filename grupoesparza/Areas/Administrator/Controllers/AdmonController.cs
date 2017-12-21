@@ -8,16 +8,16 @@ using grupoesparza.utilerias;
 using grupoesparza.Areas.Administrator.Models;
 using System.Web;
 using System.Web.Mvc;
+using grupoesparza.Areas.Administrator.HandlerClasses;
 
 namespace grupoesparza.Areas.Administrator.Controllers
 {
-    public class AdmonAccountController : Controller
+    public class AdmonController : Controller
     {
 
-        [Authorize]
         public ActionResult Index()
         {
-            return View("Index");
+            return View();
         }
 
 

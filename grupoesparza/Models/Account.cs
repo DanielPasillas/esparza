@@ -29,25 +29,24 @@ namespace grupoesparza.Models
     {
         [Required]
         [Display(Name = "Nombre")]
-        public string NombreUsuario { get; set; }
+        public string Nombre { get; set; }
 
         [Required]
         [Display(Name = "Apellidos")]
-        public string ApellidosUsuario { get; set; }
+        public string Apellidos { get; set; }
 
         [Required]
         [Display(Name = "Teléfono")]
-        [DataType(DataType.PhoneNumber)]
-        public string TelefonoUsuario { get; set; }
+        public string Telefono { get; set; }
 
         [Required]
-        public long idUniversidad { get; set; }
+        public long id_universidad { get; set; }
 
         [Required]
-        public long idCarrera { get; set; }
+        public long id_carrera { get; set; }
 
         [Required]
-        public long idGrupo { get; set; }
+        public long id_grupo { get; set; }
 
         [Required]
         [Display(Name = "E-mail")]
@@ -58,6 +57,19 @@ namespace grupoesparza.Models
         [Display(Name = "Contraseña")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+
+        public int estatus_account { get; set; }
+
+        public int estatus_active { get; set; }
+
+        public DateTime fecha_registro { get; set; }
+
+        public Register()
+        {
+            estatus_account = 1;
+            estatus_active = 1;
+            fecha_registro = DateTime.Now;
+        }
 
     }
 }

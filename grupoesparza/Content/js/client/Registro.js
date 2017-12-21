@@ -31,6 +31,7 @@ $(function () {
                 dataType: 'json',
                 success: function (data) {
                     $(".dropdown-carreer").html('');
+                    $(".dropdown-carreer").append('<option>-- Selecciona tu carrera --</option>');
                     $.each(data, function (i, item) {
                         $(".dropdown-carreer").append('<option value="'+item.id_carrera+'">'+item.NombreCarrera+'</option>');
                     });
@@ -58,7 +59,8 @@ $(function () {
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'json',
                 success: function (data) {
-                    $(".dropdown-carreer").html('');
+                    $(".dropdown-group").html('');
+                    $(".dropdown-group").html('<option>-- Selecciona tu grupo --</option>');
                     $.each(data, function (i, item) {
                         $(".dropdown-group").append('<option value="' + item.id_grupo + '">' + item.grado + ' - '+ item.grupo +'</option>');
                     });
@@ -73,8 +75,21 @@ $(function () {
     });
     //---------------------------------------------------------
 
-
+    setInterval(function () {
+        RandomGallery()
+    }, 9090);
 });
+
+function RandomGallery()
+{
+    var items = Array('emporio.jpg', 'grecia.jpg', 'zafari.jpg', 'miriam.jpg','zenca.jpg');
+
+    var selected = items[Math.floor(Math.random() * items.length)];
+    $('.img-gallery-container').fadeOut(500, function () {
+        $('.img-gallery-container').attr('src', '../Content/img/varias/' + selected);
+    }).fadeIn(500);
+}
+
 
 function GetUniversities() {
     try {
