@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using grupoesparza.utilerias;
 using grupoesparza.Models;
 using System.Web.Mvc;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using grupoesparza.App_Start;
 using System.Data.Entity.Validation;
+using System.Security.Cryptography;
 
 namespace grupoesparza.Controllers
 {
@@ -31,6 +33,46 @@ namespace grupoesparza.Controllers
         }
         //----------------------------------------------------------
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(Login userLogin)
+        {
+            if(ModelState.IsValid)
+            {
+                var user = _dbContext.admin_user_table.FirstOrDefault(m => m.Email == userLogin.Email);
+
+                if (user == null)
+                {
+                    ViewBag.ErrorMsg = "El correo electronico o la contraseña son incorrectos.";
+                    return View("Login");
+                }
+                else
+                {
+                    MD5 _hash = MD5.Create();
+
+                    var _hasPass = Utilerias.GetMd5Hash(_hash, userLogin.Password);
+
+                    user = _dbContext.admin_user_table.FirstOrDefault(m => m.Password == _hasPass);
+
+                    if (user == null)
+                    {
+                        
+                       ViewBag.ErrorMsg = "El correo electronico o la contraseña son incorrectos.";
+                       return View("Login");
+                    }
+                    else
+                    {
+                        return RedirectToAction("index", "panel");
+                    }
+                }
+            }
+            else
+            {
+                return RedirectToAction("log-in", ModelState);
+            }
+        }
+        //----------------------------------------------------------
+
 
         [ActionName("register")]
         public ActionResult Registro()
@@ -47,6 +89,12 @@ namespace grupoesparza.Controllers
             {
                 try
                 {
+
+                    MD5 _hash = MD5.Create();
+
+                    //Hash password.
+                    user.Password = Utilerias.GetMd5Hash(_hash, user.Password);
+
                     var userDTO = Mapper.Map<Register, admin_user_table>(user);
 
                     _dbContext.admin_user_table.Add(userDTO);

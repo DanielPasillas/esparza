@@ -326,7 +326,7 @@
     <Compile Include="Controllers\EventosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PanelController.cs" />
-    <Compile Include="Controllers\ServiciosController.cs" />
+    <Compile Include="Controllers\ServicesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -461,6 +461,7 @@
     <Content Include="Content\fonts\lgd641.ttf" />
     <Content Include="Content\fonts\lgd641.woff" />
     <Content Include="Views\Panel\Index.cshtml" />
+    <Content Include="Views\Services\Documentacion.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />

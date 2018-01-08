@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace grupoesparza.Controllers
 {
-    public class ServiciosController : Controller
+    public class ServicesController : Controller
     {
         // GET: Services
         //public ActionResult Index()
@@ -25,8 +25,12 @@ namespace grupoesparza.Controllers
         {
             return View("Togas");
         }
-    
-           //Missing to add the documentation section.
+
+        [ActionName("documentacion")]
+        public ActionResult Documentacion()
+        {
+            return View("Documentacion");
+        }
 
     }
 }

@@ -13,14 +13,15 @@ namespace grupoesparza.Models
     public class Login
     {
         [Required]
-        [Display(Name = "Email")]
+        [Display(Name = "E-mail")]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
         [Required]
         [Display(Name = "Contraseña")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Required]
         [Display(Name = "Recordarme")]
         public bool RememberMe { get; set; }
     }
@@ -37,7 +38,7 @@ namespace grupoesparza.Models
 
         [Required]
         [Display(Name = "Teléfono")]
-        public string Telefono { get; set; }
+        public int Telefono { get; set; }
 
         [Required]
         public long id_universidad { get; set; }
