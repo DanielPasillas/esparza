@@ -2,6 +2,9 @@
 
 
 @{
+
+    int loginAttempts = Session["re-captcha-attempts"] == null ? 0 : (int)Session["re-captcha-attempts"];
+
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -13,45 +16,62 @@
     }
 </style>
 
-<br /><br /><br /><br />
-<div class="container">
-    @using (Html.BeginForm("login", "account", FormMethod.Post))
-    {
-        @Html.AntiForgeryToken()
-        <div class="row">
-            <div class="col-md-4">
-            </div>
-            <div class="col-md-4">
-                <h3 style="text-align:center;">Panel de acceso - Grupo esparza</h3><hr />
-                @if (ViewBag.ErrorMsg != null)
-                {
-                    <div class="alert alert-warning">
-                        @ViewBag.ErrorMsg
+@if(User.Identity.IsAuthenticated)
+{
+    @Html.Action("index", "panel");
+}
+else
+{
+    <br /><br /><br /><br />
+    <div class="container">
+        @using (Html.BeginForm("login", "account", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="row">
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-4">
+                    <h3 style="text-align:center;">Panel de acceso - Grupo esparza</h3><hr />
+                    @if (ViewBag.ErrorMsg != null || loginAttempts > 5)
+                    {
+                        <div class="alert alert-warning">
+                            @ViewBag.ErrorMsg
+                        </div>
+                    }
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email)
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Ingresa tu E-mail...", @autofocus = "true" })
+                        @Html.ValidationMessageFor(m => m.Email)
                     </div>
-                }
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Email)
-                    @Html.TextBoxFor(m => m.Email, new {@class = "form-control", @placeholder = "Ingresa tu E-mail...", @autofocus = "true" })
-                    @Html.ValidationMessageFor(m => m.Email)
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password)
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Ingresa tu contraseña..." })
+                        @Html.ValidationMessageFor(m => m.Password)
+                    </div>
+                    <div class="form-group">
+                        @Html.CheckBoxFor(m => m.RememberMe)
+                        @Html.LabelFor(m => m.RememberMe)
+                    </div>
+                    @if (loginAttempts > 5)
+                    {
+                        <div class="form-group">
+                            <div class="g-recaptcha" data-sitekey="6LePLUAUAAAAADAd-bG9R0TcvDkuZ-8SE8fPPNjE"></div>
+                        </div>
+                    }
+                   
+                    <div class="form-group">
+                        <button style="width:100%;" class="btn btn-success">
+                            Ingresar
+                        </button>
+                    </div>
                 </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Password)
-                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Ingresa tu contraseña..." })
-                    @Html.ValidationMessageFor(m => m.Password)
-                </div>
-                <div class="form-group">
-                    @Html.CheckBoxFor(m => m.RememberMe)
-                    @Html.LabelFor(m => m.RememberMe)
-                </div>
-                <div class="form-group">
-                    <button style="width:100%;" class="btn btn-success">
-                        Ingresar
-                    </button>
+                <div class="col-md-4">
                 </div>
             </div>
-            <div class="col-md-4">
-            </div>
-        </div>
-    }
-</div>
+        }
+    </div>
+}
 
+@section scripts{
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+}

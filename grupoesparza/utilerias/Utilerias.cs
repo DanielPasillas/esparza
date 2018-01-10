@@ -6,11 +6,15 @@ using System.Web.Helpers;
 using System.Web;
 using System.Text;
 using grupoesparza.Models;
+using System.Net;
+using Newtonsoft.Json.Linq;
 
 namespace grupoesparza.utilerias
 {
     public class Utilerias
     {
+
+        private string secretKey = "6LePLUAUAAAAAGytzJY2yHOs9rJuoRbLU71BKOi2";
 
         public static string GetMd5Hash(MD5 md5Hash, string input)
         {
@@ -32,6 +36,23 @@ namespace grupoesparza.utilerias
             // Return the hexadecimal string.
             return sBuilder.ToString();
         }
+        //-----------------------------------------------------------
+
+        public bool ValidRecaptcha(string request)
+        {
+            var response = request;
+            
+            var client = new WebClient();
+            var result = client.DownloadString(string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", this.secretKey, response));
+            var obj = JObject.Parse(result);
+            var status = (bool)obj.SelectToken("success");
+
+            if (!status)
+                return false;
+
+            return true;
+        }
+        //-----------------------------------------------------------
 
     }
 }

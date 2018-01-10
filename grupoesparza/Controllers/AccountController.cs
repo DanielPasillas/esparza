@@ -13,6 +13,7 @@ using Microsoft.AspNet.Identity.Owin;
 using grupoesparza.App_Start;
 using System.Data.Entity.Validation;
 using System.Security.Cryptography;
+using System.Security.Claims;
 
 namespace grupoesparza.Controllers
 {
@@ -29,6 +30,7 @@ namespace grupoesparza.Controllers
         [ActionName("log-in")]
         public ActionResult Login()
         {
+            Session["re-captcha-attempts"] = 0;
             return View("Login");
         }
         //----------------------------------------------------------
@@ -43,6 +45,8 @@ namespace grupoesparza.Controllers
 
                 if (user == null)
                 {
+                    Session["re-captcha-attempts"] = Session["re-captcha-attempts"] == null ? 0 : (int)Session["re-captcha-attempts"] + 1;
+                    
                     ViewBag.ErrorMsg = "El correo electronico o la contraseña son incorrectos.";
                     return View("Login");
                 }
@@ -56,13 +60,35 @@ namespace grupoesparza.Controllers
 
                     if (user == null)
                     {
-                        
-                       ViewBag.ErrorMsg = "El correo electronico o la contraseña son incorrectos.";
+                        Session["re-captcha-attempts"] = Session["re-captcha-attempts"] == null ? 0 : (int)Session["re-captcha-attempts"] + 1;
+                        ViewBag.ErrorMsg = "El correo electronico o la contraseña son incorrectos.";
                        return View("Login");
                     }
                     else
                     {
-                        return RedirectToAction("index", "panel");
+                        //Validate re-captcha
+                        if((int)Session["re-captcha-attempts"] > 5)
+                        {
+                            Utilerias util = new Utilerias();
+
+                            bool response = util.ValidRecaptcha(Request["g-recaptcha-response"]);
+
+                            if(!response)
+                            {
+                                ViewBag.ErrorMsg = "Confirme el componente reCaptcha.";
+                                return View("Login");
+                            }
+                        }
+
+                        var userManager = HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
+                        var authManager = HttpContext.GetOwinContext().Authentication;
+
+                        //Set authentication.
+                        var ident = new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, userLogin.Email), }, DefaultAuthenticationTypes.ApplicationCookie);
+                        authManager.SignIn(new AuthenticationProperties { IsPersistent = userLogin.RememberMe }, ident);
+
+                        return RedirectToAction("index","panel");
+
                     }
                 }
             }
