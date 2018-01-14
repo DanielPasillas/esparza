@@ -24,7 +24,7 @@ else
 {
     <br /><br /><br /><br />
     <div class="container">
-        @using (Html.BeginForm("login", "account", FormMethod.Post))
+        @using (Html.BeginForm("login", "account", FormMethod.Post, new { ReturnUrl = ViewBag.ReturnUrl }))
         {
             @Html.AntiForgeryToken()
             <div class="row">

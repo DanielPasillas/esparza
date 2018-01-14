@@ -86,15 +86,60 @@
                                         <a href="@Url.Action("contacto", "home")">Contacto</a>
                                     </li>
 
-                                    <!-- Sign in Link-->
-                                    <li>
-                                        <a href="@Url.Action("register", "account")">Registrate</a>
-                                    </li>
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+                                        <!-- Catálogos -->
+                                        <li>
+                                            <a href="#">Catálogos</a>
+                                            <ul class="rd-navbar-dropdown">
+                                                <li><a href="#">Bases panorámicas</a></li>
+                                                <li><a href="#">Bases agradecimiento</a></li>
+                                                <li><a href="#">Maderas y Tonos</a></li>
+                                                <li><a href="#">Textos agradecimiento</a></li>
+                                                <li><a href="#">Placas y Esculturas</a></li>
+                                            </ul>
+                                        </li>
 
-                                    <!-- Login section Link-->
-                                    <li>
-                                        <a href="@Url.Action("log-in", "account")">Ingresa</a>
-                                    </li>
+                                        <!-- Login section Link-->
+                                        <li>
+                                            <a href="#">
+                                            <span class="glyphicon glyphicon-user"></span> &nbsp; @User.Identity.Name</a>
+                                            <ul class="rd-navbar-dropdown">
+                                                <li>
+                                                    <a href="#">
+                                                        <span style="margin-top:3px;" class="glyphicon glyphicon-cog"></span> &nbsp;
+                                                        Configurar perfil
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <span style="margin-top:3px;" class="glyphicon glyphicon-cog"></span> &nbsp;
+                                                        Mi pedido
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="@Url.Action("log-off", "account")">
+                                                        <span style="margin-top:3px;" class="glyphicon glyphicon-log-out"></span> &nbsp;
+                                                        Salir
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                         <!-- Sign in Link-->
+                                        <li>
+                                            <a href="@Url.Action("register", "account")">Registrate</a>
+                                        </li>
+
+                                        <!-- Login section Link-->
+                                        <li>
+                                            <a href="@Url.Action("log-in", "account")">Ingresa</a>
+                                        </li>
+                                    }
+
+                                   
 
                                 </ul>
                             </div>
@@ -104,7 +149,6 @@
                                 <ul>
                                     <li><a href="https://es-la.facebook.com/Grupo-Esparza-409684932558879/" class="btn btn-social-min btn-default btn-rounded-full" title="Follow me on Facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
                                     <li><a href="#" class="btn btn-social-min btn-default btn-rounded-full" title="Follow me on Twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#" class="btn btn-social-min btn-default btn-rounded-full" title="Follow me on Google+" target="_blank"><i class="fa fa-google-plus"></i></a></li>
                                 </ul>
                             </div>
                         </div>

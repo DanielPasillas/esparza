@@ -8,8 +8,15 @@ namespace grupoesparza.Areas.Administrator.Models
 {
     public class Carreras
     {
+
         public long id_carrera { get; set; }
+
+        [Required]
+        [Display(Name = "Universidad")]
         public long id_universidad { get; set; }
+
+        [Required]
+        [Display(Name = "Universidad")]
         public string Universidad { get; set; }
 
         [Required(ErrorMessage = "El nombre no debe quedar vacío")]
@@ -19,5 +26,10 @@ namespace grupoesparza.Areas.Administrator.Models
         [Required(ErrorMessage = "Ingrese la generación")]
         [Display(Name = "Generación")]
         public string Generacion { get; set; }
+
+        public Carreras()
+        {
+            id_carrera = 0;
+        }
     }
 }

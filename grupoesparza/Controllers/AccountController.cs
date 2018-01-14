@@ -14,6 +14,7 @@ using grupoesparza.App_Start;
 using System.Data.Entity.Validation;
 using System.Security.Cryptography;
 using System.Security.Claims;
+using System.Net;
 
 namespace grupoesparza.Controllers
 {
@@ -28,8 +29,9 @@ namespace grupoesparza.Controllers
         //----------------------------------------------------------
 
         [ActionName("log-in")]
-        public ActionResult Login()
+        public ActionResult Login(string returnUrl)
         {
+            ViewBag.ReturnUrl = returnUrl;
             Session["re-captcha-attempts"] = 0;
             return View("Login");
         }
@@ -37,7 +39,7 @@ namespace grupoesparza.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(Login userLogin)
+        public ActionResult Login(Login userLogin, string returnUrl)
         {
             if(ModelState.IsValid)
             {
@@ -87,7 +89,16 @@ namespace grupoesparza.Controllers
                         var ident = new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, userLogin.Email), }, DefaultAuthenticationTypes.ApplicationCookie);
                         authManager.SignIn(new AuthenticationProperties { IsPersistent = userLogin.RememberMe }, ident);
 
-                        return RedirectToAction("index","panel");
+                        //Check if there is an URL in the request.
+                        if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                        {
+                            return Redirect(returnUrl);
+                        }
+                        else
+                        {
+                            return RedirectToAction("index","panel");
+                        }
+                        
 
                     }
                 }
@@ -98,6 +109,22 @@ namespace grupoesparza.Controllers
             }
         }
         //----------------------------------------------------------
+
+        private IAuthenticationManager AuthenticationManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().Authentication;
+            }
+        }
+
+        [ActionName("log-off")]
+        public ActionResult LogOff()
+        {
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            return RedirectToAction("log-in", "account");
+        }
+
 
 
         [ActionName("register")]

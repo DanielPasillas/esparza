@@ -9,26 +9,29 @@ using grupoesparza.Areas.Administrator.Models;
 using System.Web;
 using System.Web.Mvc;
 using grupoesparza.Areas.Administrator.HandlerClasses;
+using Microsoft.AspNet.Identity.Owin;
+using grupoesparza.App_Start;
+using System.Security.Claims;
+using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security;
 
 namespace grupoesparza.Areas.Administrator.Controllers
 {
     public class AdmonController : Controller
     {
+        private readonly esparza_dbEntities _dbContext;
 
-        public ActionResult Index()
+        public AdmonController()
         {
-            return View();
+            _dbContext = new esparza_dbEntities();
         }
-
 
         [ActionName("admin-login")]
         public ActionResult Login()
         {
-            if (Request.IsAuthenticated)
-                return RedirectToAction("Index", "Account");
-
             return View("Login");
         }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -36,39 +39,46 @@ namespace grupoesparza.Areas.Administrator.Controllers
         {
             if(ModelState.IsValid)
             {
-                using (esparza_dbEntities _db = new esparza_dbEntities())
+                var user = _dbContext.admin_auth_table.FirstOrDefault(m => m.Email == loginModel.Email);
+
+                if (user == null)
                 {
-                    var _email =  _db.admin_auth_table.FirstOrDefault(m => m.Email == loginModel.Email);
+                    ViewBag.ErrorMsg = "El correo electronico o la contraseña son incorrectos.";
+                    return View("Login");
+                }
+                else
+                {
+                    MD5 _hash = MD5.Create();
 
-                    if (_email == null)
-                        return View("Login", loginModel);
+                    var _hasPass = Utilerias.GetMd5Hash(_hash, loginModel.Password);
 
-                    using (MD5 _hash = MD5.Create())
+                    user = _dbContext.admin_auth_table.FirstOrDefault(m => m.Password == _hasPass);
+
+                    if (user == null)
+                    {
+                        ViewBag.ErrorMsg = "El correo electronico o la contraseña son incorrectos.";
+                        return View("Login");
+                    }
+                    else
                     {
 
-                        string _pass = Utilerias.GetMd5Hash(_hash, loginModel.Password);
+                        var userManager = HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
+                        var authManager = HttpContext.GetOwinContext().Authentication;
 
-                        var _password = _db.admin_auth_table.FirstOrDefault(m => m.Password == _pass);
+                        //Set authentication.
+                        var ident = new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, loginModel.Email), }, DefaultAuthenticationTypes.ApplicationCookie);
+                        authManager.SignIn(new AuthenticationProperties { IsPersistent = false }, ident);
 
-                        if (_password == null)
-                            return View("Login", loginModel);
-
-                        //If everything is OK, we will create the cookies and sessions.
-                        FormsAuthentication.SetAuthCookie(loginModel.Email, false);
-
-                        var authTicket = new FormsAuthenticationTicket(1, loginModel.Email, DateTime.Now, DateTime.Now.AddMinutes(20), false, null);
-                        string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
-                        var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
-                        HttpContext.Response.Cookies.Add(authCookie);
-
-                        return RedirectToAction("Index", "account");
+                        //Check if there is an URL in the request.
+                        return RedirectToAction("index", "main");
 
                     }
-
                 }
             }
-
-            return View("Login", loginModel);
+            else
+            {
+                return View("Login", loginModel);
+            }
                 
         }
         //--------------------------------------------------------

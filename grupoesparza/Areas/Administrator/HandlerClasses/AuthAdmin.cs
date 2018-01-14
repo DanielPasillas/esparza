@@ -9,6 +9,7 @@ namespace grupoesparza.Areas.Administrator.HandlerClasses
 {
     public class AuthAdmin : AuthorizeAttribute
     {
+        //This file is used to redirect to the Administrator Area log-in.
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {
             string controller = filterContext.RouteData.Values["controller"].ToString();
