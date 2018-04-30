@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Web;
 using grupoesparza.utilerias;
 using grupoesparza.Models;
@@ -39,11 +40,11 @@ namespace grupoesparza.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(Login userLogin, string returnUrl)
+        public async Task<ActionResult> Login(Login userLogin, string returnUrl)
         {
             if(ModelState.IsValid)
             {
-                var user = _dbContext.admin_user_table.FirstOrDefault(m => m.Email == userLogin.Email);
+                var user = await _dbContext.admin_user_table.FirstOrDefaultAsync(m => m.Email == userLogin.Email);
 
                 if (user == null)
                 {
@@ -58,7 +59,7 @@ namespace grupoesparza.Controllers
 
                     var _hasPass = Utilerias.GetMd5Hash(_hash, userLogin.Password);
 
-                    user = _dbContext.admin_user_table.FirstOrDefault(m => m.Password == _hasPass);
+                    user = await _dbContext.admin_user_table.FirstOrDefaultAsync(m => m.Password == _hasPass);
 
                     if (user == null)
                     {
@@ -173,7 +174,7 @@ namespace grupoesparza.Controllers
                 }
             }
 
-            return View("Registro", ModelState);
+            return View("Registro", user);
         }
         //----------------------------------------------------------
     }

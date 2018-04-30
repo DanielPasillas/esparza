@@ -6,7 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="f2adea01684a46c7be9877dc0f3a555e" Name="Diagram1">
         <EntityTypeShape EntityType="esparza_dbModel.admin_auth_table" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="esparza_dbModel.admin_user_table" Width="1.5" PointX="7.5" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="esparza_dbModel.admin_user_table" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="esparza_dbModel.bases" Width="1.5" PointX="7.5" PointY="4.25" IsExpanded="true" />
         <EntityTypeShape EntityType="esparza_dbModel.carreras" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
         <EntityTypeShape EntityType="esparza_dbModel.galerias" Width="1.5" PointX="2.75" PointY="1.625" IsExpanded="true" />

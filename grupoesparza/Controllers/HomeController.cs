@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,22 +7,30 @@ using grupoesparza.Models;
 using System.Web.Mvc;
 using System.Web.Helpers;
 using grupoesparza.utilerias;
+using System.Threading.Tasks;
 
 namespace grupoesparza.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
-        {
-            using (esparza_dbEntities _db = new esparza_dbEntities())
-            {
-                //Obtenemos la lista de galeria aleatoria.
-                var randomGallery = _db.galerias.ToList();
+        private esparza_dbEntities _dbContext;
 
-                return View(randomGallery);
-            }
-           
+        public HomeController()
+        {
+            _dbContext = new esparza_dbEntities();
         }
+        //---------------------
+
+        public async Task<ActionResult> Index()
+        {
+            Inicio viewModel = new Inicio()
+            {
+                Gallery = await _dbContext.galerias.ToListAsync()
+            };
+
+            return View(viewModel);           
+        }
+        //---------------------
 
 
         // Home => Contacto
@@ -31,12 +40,10 @@ namespace grupoesparza.Controllers
             return View("Contact");
         }
         
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Contact(Contacto contacto)
+        [ActionName("gallery")]
+        public ActionResult Galeria()
         {
-
-            return RedirectToAction("Contact");
+            return View("Galeria");
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<grupoesparza.Models.galerias>
+﻿@model grupoesparza.Models.Inicio
 
 <!--Section pictures index -->
 <!-- The data is fetched from the galleries table, by using a random statement. -->
@@ -16,7 +16,7 @@
                 <div class="grid-sizer"></div>
                 @{
 
-                    if(!Model.Any())
+                    if(!Model.Gallery.Any())
                     {
                         <div class="alert alert-warning">
                             No se encontraron imágenes
@@ -24,7 +24,7 @@
                     }
                     else
                     {
-                        foreach (var Gallery in Model)
+                        foreach (var Gallery in Model.Gallery)
                         {
 
                             <div class="isotope-item ">

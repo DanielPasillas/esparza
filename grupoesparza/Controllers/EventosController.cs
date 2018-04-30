@@ -45,5 +45,17 @@ namespace grupoesparza.Controllers
         {
             return View("Comunion");
         }
+
+        [ActionName("black-white")]
+        public ActionResult BlancoYNegro()
+        {
+            return View("BlancoYNegro");
+        }
+
+        [ActionName("tematica")]
+        public ActionResult Tematica()
+        {
+            return View();
+        }
     }
 }

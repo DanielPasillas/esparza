@@ -17,6 +17,8 @@ namespace grupoesparza.Controllers
         [ActionName("paquetes-graduacion")]
         public ActionResult Graduacion()
         {
+            ViewBag.Evento = "Paquetes de graduación";
+            ViewBag.Descripcion = "Contamos con una gran variedad de paquetes de gradaución con los cuales podrás recordar ese momento tán especial.";
             return View("Graduacion");
         }
 

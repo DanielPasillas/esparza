@@ -368,6 +368,7 @@
     <Compile Include="Models\grupos.cs">
       <DependentUpon>EsparzaDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Inicio.cs" />
     <Compile Include="Models\maderas.cs">
       <DependentUpon>EsparzaDB.tt</DependentUpon>
     </Compile>
@@ -431,6 +432,7 @@
     <Content Include="Content\js\jquery.min.js" />
     <Content Include="Content\js\jquery.mousewheel.min.js" />
     <Content Include="Content\js\lightgallery.min.js" />
+    <Content Include="Content\js\main.js" />
     <Content Include="Content\js\owl.carousel.min.js" />
     <Content Include="Content\js\client\Registro.js" />
     <Content Include="Content\js\theme.js" />
@@ -465,6 +467,11 @@
     <Content Include="Content\fonts\lgd641.woff" />
     <Content Include="Views\Panel\Index.cshtml" />
     <Content Include="Views\Services\Documentacion.cshtml" />
+    <Content Include="Views\Home\Galeria.cshtml" />
+    <Content Include="Views\Home\PartialViews\_contactForm.cshtml" />
+    <Content Include="Views\Eventos\BlancoYNegro.cshtml" />
+    <Content Include="Views\Eventos\Tematica.cshtml" />
+    <Content Include="Views\Services\_contentGraduationGallery.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
@@ -547,7 +554,7 @@
     <Content Include="Views\Home\PartialViews\_articlesPhotos.cshtml" />
     <Content Include="Views\Home\PartialViews\_testimonialClients.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Eventos\_baseCoverHeader.cshtml" />
+    <Content Include="Views\_baseCoverHeader.cshtml" />
     <Content Include="Views\Eventos\_baseBodyGallery.cshtml" />
     <Content Include="Views\Services\Graduacion.cshtml" />
     <Content Include="Views\Services\Togas.cshtml" />
@@ -559,6 +566,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administrator\Content\css\" />
     <Folder Include="Areas\Administrator\Views\Resources\" />
+    <Folder Include="Content\slider\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

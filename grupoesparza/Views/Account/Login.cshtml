@@ -1,11 +1,10 @@
 ﻿@model grupoesparza.Models.Login
 
-
 @{
 
     int loginAttempts = Session["re-captcha-attempts"] == null ? 0 : (int)Session["re-captcha-attempts"];
 
-    ViewBag.Title = "Login";
+    ViewBag.Title = "Acceso";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 

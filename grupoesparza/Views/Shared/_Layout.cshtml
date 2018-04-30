@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html lang="en" class=" wow-animation">
 
-<!-- Mirrored from livedemo00.template-help.com/fiona_v2/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 18 Oct 2017 01:31:00 GMT -->
 <head>
 
     <title>@ViewBag.Title - Grupo Esparza</title>
@@ -46,7 +45,6 @@
                             <div class="rd-navbar-brand">
                                 <a class="brand" href="/">
                                     <img class="brand-logo-light" src="~/Content/img/esparza.png" alt="" width="172" height="32" />
-                                    <!--img class="brand-logo-light" src="../../static.livedemo00.template-help.com/fiona_v2/assets/img/logo-light.png" alt="" width="172" height="32" /-->
                                 </a>
                             </div>
                         </div>
@@ -54,7 +52,7 @@
                             <div class="rd-navbar-nav-wrap">
                                 <!-- RD Navbar Nav-->
                                 <ul class="rd-navbar-nav">
-                                    
+
                                     <!-- Index Link -->
                                     <li>
                                         <a href="@Url.Action("Index", "Home")">Inicio</a>
@@ -72,12 +70,14 @@
 
                                     <!--Events link-->
                                     <li>
-                                        <a href="#">Eventos</a>
+                                        <a href="#">Galerías</a>
                                         <ul class="rd-navbar-dropdown">
                                             <li><a href="@Url.Action("bodas","eventos")">Bodas</a></li>
                                             <li><a href="@Url.Action("xv-anos","eventos")">XV años</a></li>
                                             <li><a href="@Url.Action("bautizos","eventos")">Bautizos</a></li>
                                             <li><a href="@Url.Action("primera-comunion","eventos")">Primera comunión</a></li>
+                                            <li><a href="@Url.Action("black-white","eventos")">Black & White</a></li>
+                                            <li><a href="@Url.Action("tematica","eventos")">Temática</a></li>
                                         </ul>
                                     </li>
 
@@ -130,17 +130,14 @@
                                     {
                                          <!-- Sign in Link-->
                                         <li>
-                                            <a href="@Url.Action("register", "account")">Registrate</a>
+                                            <a href="@Url.Action("register", "account")">Registro</a>
                                         </li>
 
                                         <!-- Login section Link-->
                                         <li>
-                                            <a href="@Url.Action("log-in", "account")">Ingresa</a>
+                                            <a href="@Url.Action("log-in", "account")">Ingresar</a>
                                         </li>
                                     }
-
-                                   
-
                                 </ul>
                             </div>
                         </div>
@@ -169,6 +166,6 @@
         @Scripts.Render("~/bundles/jqueryval")
         @Scripts.Render("~/bundles/javascript")
         @RenderSection("scripts", required: false)
-
+    
 </body>
 </html>
