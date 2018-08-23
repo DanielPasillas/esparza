@@ -9,11 +9,18 @@ namespace grupoesparza.Controllers
     public class ServicesController : Controller
     {
         // GET: Services
-        //public ActionResult Index()
-        //{
-        //  return View();
-        //}
+        /*
+         *  Services => Home => Index //Redirect to landing page.
+         */
+        public ActionResult Index()
+        {
+            return RedirectToAction("Index", "Home");
+        }
+        //---------------------------------------------
 
+        /*
+         *  Services => paquetes-graduación
+         */
         [ActionName("paquetes-graduacion")]
         public ActionResult Graduacion()
         {
@@ -21,18 +28,16 @@ namespace grupoesparza.Controllers
             ViewBag.Descripcion = "Contamos con una gran variedad de paquetes de gradaución con los cuales podrás recordar ese momento tán especial.";
             return View("Graduacion");
         }
+        //---------------------------------------------
 
-        [ActionName("renta-togas")]
-        public ActionResult Togas()
-        {
-            return View("Togas");
-        }
-
+        /*
+         * Services => Documentación
+         */
         [ActionName("documentacion")]
         public ActionResult Documentacion()
         {
             return View("Documentacion");
         }
-
+        //---------------------------------------------
     }
 }

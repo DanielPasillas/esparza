@@ -135,6 +135,18 @@
           <Property Name="tipo" Type="int" Nullable="false" />
           <Property Name="estatus" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="slider">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="image" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="titulo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="texto" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="isHyperLink" Type="int" />
+          <Property Name="LinkURL" Type="varchar" MaxLength="1000" />
+          <Property Name="presentar" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="textos">
           <Key>
             <PropertyRef Name="id_texto" />
@@ -411,6 +423,7 @@
           <EntitySet Name="pedido_agradecimiento" EntityType="Self.pedido_agradecimiento" Schema="esparza_db" store:Type="Tables" />
           <EntitySet Name="pedido_panoramica" EntityType="Self.pedido_panoramica" Schema="esparza_db" store:Type="Tables" />
           <EntitySet Name="placa_escultura" EntityType="Self.placa_escultura" Schema="esparza_db" store:Type="Tables" />
+          <EntitySet Name="slider" EntityType="Self.slider" Schema="esparza_db" store:Type="Tables" />
           <EntitySet Name="textos" EntityType="Self.textos" Schema="esparza_db" store:Type="Tables" />
           <EntitySet Name="tonos" EntityType="Self.tonos" Schema="esparza_db" store:Type="Tables" />
           <EntitySet Name="universidades" EntityType="Self.universidades" Schema="esparza_db" store:Type="Tables" />
@@ -998,7 +1011,20 @@
             <End Role="placa_escultura" EntitySet="placa_escultura" />
             <End Role="pedido_panoramica" EntitySet="pedido_panoramica" />
           </AssociationSet>
+          <EntitySet Name="slider" EntityType="esparza_dbModel.slider" />
         </EntityContainer>
+        <EntityType Name="slider">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="image" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="titulo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="texto" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="presentar" Type="Int32" Nullable="false" />
+          <Property Name="isHyperLink" Type="Int32" />
+          <Property Name="LinkURL" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1172,6 +1198,19 @@
                 <ScalarProperty Name="id_universidad" ColumnName="id_universidad" />
                 <ScalarProperty Name="NombreUniversidad" ColumnName="NombreUniversidad" />
                 <ScalarProperty Name="estatus" ColumnName="estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="slider">
+            <EntityTypeMapping TypeName="esparza_dbModel.slider">
+              <MappingFragment StoreEntitySet="slider">
+                <ScalarProperty Name="LinkURL" ColumnName="LinkURL" />
+                <ScalarProperty Name="isHyperLink" ColumnName="isHyperLink" />
+                <ScalarProperty Name="presentar" ColumnName="presentar" />
+                <ScalarProperty Name="texto" ColumnName="texto" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

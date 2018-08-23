@@ -1,28 +1,18 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class=" wow-animation">
-
 <head>
-
     <title>@ViewBag.Title - Grupo Esparza</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <link rel="shortcut icon" href="~/Content/img/esparza.png" type="image/x-icon">
-
     <link rel="icon" href="~/Content/img/favicon.png" type="image/x-icon">
-
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700" rel="stylesheet">
-
     <!--Here we place the CSS Vendor.-->
     @Styles.Render("~/Content/vendor")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
-
 <body id="body" class="animsition tt-boxed tt-dark-style">
     <header class="section page-header">
         <!-- RD Navbar-->
@@ -34,7 +24,6 @@
                 <div class="rd-navbar-collapse-toggle rd-navbar-fixed-element-1" data-rd-navbar-toggle=".rd-navbar-collapse">
                     <span></span>
                 </div>
-
                 <div class="rd-navbar-main-outer">
                     <div class="rd-navbar-main">
                         <!-- RD Navbar Panel-->
@@ -63,22 +52,18 @@
                                         <a href="#">Servicios</a>
                                         <ul class="rd-navbar-dropdown">
                                             <li><a href="@Url.Action("paquetes-graduacion","services")">Graduaciones</a></li>
-                                            <li><a href="@Url.Action("renta-togas","services")">Renta de togas</a></li>
                                             <li><a href="@Url.Action("renta-togas","services")">Documentación</a></li>
                                         </ul>
                                     </li>
 
-                                    <!--Events link-->
+                                    <!-- Events link-->
                                     <li>
-                                        <a href="#">Galerías</a>
-                                        <ul class="rd-navbar-dropdown">
-                                            <li><a href="@Url.Action("bodas","eventos")">Bodas</a></li>
-                                            <li><a href="@Url.Action("xv-anos","eventos")">XV años</a></li>
-                                            <li><a href="@Url.Action("bautizos","eventos")">Bautizos</a></li>
-                                            <li><a href="@Url.Action("primera-comunion","eventos")">Primera comunión</a></li>
-                                            <li><a href="@Url.Action("black-white","eventos")">Black & White</a></li>
-                                            <li><a href="@Url.Action("tematica","eventos")">Temática</a></li>
-                                        </ul>
+                                        <a href="#">Galería</a>
+                                    </li>
+
+                                    <!-- Quiénes somos -->
+                                    <li>
+                                        <a href="@Url.Action("about", "home")">Quiénes somos</a>
                                     </li>
 
                                     <!--Contact Section Link-->

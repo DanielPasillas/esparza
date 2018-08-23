@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using Microsoft.Owin;
 using Owin;
 using System.Web.Services.Description;
-using grupoesparza.Areas;
 
 
 [assembly: OwinStartup(typeof(grupoesparza.Startup))]

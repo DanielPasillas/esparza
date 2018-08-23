@@ -39,5 +39,6 @@ namespace grupoesparza.Models
         public DbSet<textos> textos { get; set; }
         public DbSet<tonos> tonos { get; set; }
         public DbSet<universidades> universidades { get; set; }
+        public DbSet<slider> slider { get; set; }
     }
 }

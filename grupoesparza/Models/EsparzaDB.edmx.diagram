@@ -36,6 +36,7 @@
         <AssociationConnector Association="esparza_dbModel.pedido_agradecimiento_ibfk_6" ManuallyRouted="false" />
         <AssociationConnector Association="esparza_dbModel.pedido_panoramica_ibfk_4" ManuallyRouted="false" />
         <AssociationConnector Association="esparza_dbModel.pedido_panoramica_ibfk_5" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="esparza_dbModel.slider" Width="1.5" PointX="0.75" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
