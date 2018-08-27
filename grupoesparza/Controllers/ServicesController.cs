@@ -30,6 +30,17 @@ namespace grupoesparza.Controllers
         }
         //---------------------------------------------
 
+
+        /*
+        *  Services => Fotografía 
+        */
+        [ActionName("fotografia")]
+        public ActionResult Fotografia()
+        {
+            return View("Fotografia");
+        }
+        //---------------------------------------------
+
         /*
          * Services => Documentación
          */

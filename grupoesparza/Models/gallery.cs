@@ -12,14 +12,14 @@ namespace grupoesparza.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class slider
+    public partial class gallery
     {
-        public int id { get; set; }
-        public string image { get; set; }
-        public Nullable<int> isHyperLink { get; set; }
-        public string LinkURL { get; set; }
-        public int presentar { get; set; }
-        public string texto { get; set; }
-        public string titulo { get; set; }
+        public long id_img { get; set; }
+        public string imagen { get; set; }
+        public string comentario { get; set; }
+        public int tipo { get; set; }
+        public string @class { get; set; }
+        public int status { get; set; }
+        public System.DateTime fecha_alta { get; set; }
     }
 }

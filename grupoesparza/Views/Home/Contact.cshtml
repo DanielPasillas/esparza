@@ -5,108 +5,12 @@
     ViewBag.Title = "Contacto";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<br />
+<!-- Header contact -->
+@Html.Partial("ContactPartialViews/_contactHeader")
 
-    <section id="page-header" class="ph-sm">
-
-        <div class="page-header-image  bg-image" style="background-image: url(../../Content/img/contact-background.jpg);">
-            <div class="cover bg-transparent-5-dark"></div>
-        </div>
-
-        <div class="page-header-inner tt-wrap">
-
-            <div class="page-header-caption ph-caption-lg parallax-4 fade-out-scroll-3">
-                <h1 class="page-header-title">Contacto</h1>
-                <hr class="hr-short">
-                <div class="page-header-description" data-max-words="80">
-                    <p>Pide informes sobre nuestros paquetes y servicios, estamos para atenderte... </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <section id="contact-section">
-        <div class="contact-section-inner tt-wrap">
-            <div class="split-box">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="row-lg-height full-height-vh">
-
-                            <div class="col-lg-6 col-lg-height col-lg-middle bg-image" style="background-image: url(../../Content/img/contact-bg.jpg); background-position: 50% 50%;">
-
-                                <div class="cover"></div>
-
-                                <div class="split-box-content text-left no-padding-left no-padding-right">
-
-                                    <div class="contact-info-wrap">
-                                        <div class="contact-info">
-                                            <p><i class="fa fa-home"></i>  Alesio Robledo No 1, Ojocaliente, Zacatecas</p>
-                                            <p><i class="fa fa-phone"></i> +52 458 102 1622</p>
-                                            <p><i class="fa fa-envelope"></i> email: <a href="#" target="_blank"><span class="__cf_email__" data-cfemail="4d2e22203d2c23340d28202c2421632e2220">contactogrupoesparza@gmail.com</span></a></p>
-                                        </div>
-
-                                        <div class="social-buttons margin-top-20">
-                                            <ul>
-                                                <li><a href="https://www.facebook.com/Grupo-Esparza-409684932558879/?fref=ts" class="btn btn-social-min btn-default btn-rounded-full" title="Follow me on Facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="#" class="btn btn-social-min btn-default btn-rounded-full" title="Follow me on Twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="#" class="btn btn-social-min btn-default btn-rounded-full" title="Follow me on Google+" target="_blank"><i class="fa fa-google-plus"></i></a></li>
-                                            </ul>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <div class="col-lg-6 col-lg-height col-lg-middle no-padding">
-
-                                <div class="split-box-content">
-                                        
-                                    <!--Form contact-->
-                                    @using (Html.BeginForm("Contact", "Home", FormMethod.Post))
-                                    {
-                                        @Html.AntiForgeryToken()
-                                        <div class="form-wrap">
-                                            @Html.TextBoxFor(m => m.Name, new {@id="contact-name", @class = "form-input", @required = "true"})
-                                            <label class="form-label" for="contact-name">Nombre</label>
-                                        </div>
-                                        <div class="form-wrap">
-                                             @Html.TextBoxFor(m => m.Phone, new {@id="contact-phone", @class = "form-input", @required = "true", data_constraints = "@Numeric"})
-                                            <label class="form-label" for="contact-phone">Teléfono</label>
-                                        </div>
-                                        <div class="form-wrap">
-                                            <label class="form-label" for="contact-message">Ingresa tu mensaje...</label>
-                                            @Html.TextAreaFor(m => m.Message, new {@id = "contact-message", @required ="true", @class = "form-input" } )
-
-                                        </div>
-                                        <div class="form-wrap">
-                                            @Html.TextBoxFor(m => m.Email , new {@id = "form-email", @class = "form-input", @type = "email", data_constraints = "@Email @@equired" })
-                                            <label class="form-label" for="form-email">E-mail</label>
-                                        </div>
-                                        <button class="btn btn-primary" type="submit">Enviar</button>
-                                    }
-
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12 no-padding">
-                            <div id="map"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
+<!-- Body Contact section -->
+@Html.Partial("ContactPartialViews/_contactBodyContent")
 
 <!-- Main Footer -->
 @Html.Partial("~/Views/Footer.cshtml")
-
-
-  
-
-    

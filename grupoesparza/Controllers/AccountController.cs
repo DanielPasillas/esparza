@@ -21,11 +21,11 @@ namespace grupoesparza.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly esparza_dbEntities _dbContext;
-
+        private readonly esparza_db_fe _dbContext;
+        /*
         public AccountController()
         {
-            _dbContext = new esparza_dbEntities();
+            _dbContext = new esparza_db_fe();
         }
         //----------------------------------------------------------
 
@@ -177,5 +177,7 @@ namespace grupoesparza.Controllers
             return View("Registro", user);
         }
         //----------------------------------------------------------
+
+    */
     }
 }

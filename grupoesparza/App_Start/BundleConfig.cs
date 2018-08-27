@@ -28,6 +28,11 @@ namespace grupoesparza
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
+
+            //Custom bundles for FrontEnd and Javascript.
+            bundles.Add(new ScriptBundle("~/bundles/gallery").Include(
+                        "~/assets/js/Gallery.js"));
+
             // Utilice la versión de desarrollo de Modernizr para desarrollar y obtener información. De este modo, estará
             // ready for production, use the build tool at https://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
@@ -73,6 +78,10 @@ namespace grupoesparza
                       "~/Content/css/dark-style.css",
                       "~/Content/css/theme.css"));
             #endregion
+
+            //Enable web optimizations. 
+            BundleTable.EnableOptimizations = true;
+
         }
     }
 }

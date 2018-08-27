@@ -310,7 +310,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
-    <Compile Include="Classes\AccountClass.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EventosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -320,18 +319,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Account.cs" />
-    <Compile Include="Models\admin_auth_table.cs">
-      <DependentUpon>EsparzaDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\admin_user_table.cs">
-      <DependentUpon>EsparzaDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\bases.cs">
-      <DependentUpon>EsparzaDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\carreras.cs">
-      <DependentUpon>EsparzaDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Contacto.cs" />
     <Compile Include="Models\EsparzaDB.Context.cs">
       <AutoGen>True</AutoGen>
@@ -348,46 +335,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EsparzaDB.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\galerias.cs">
-      <DependentUpon>EsparzaDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\grupos.cs">
-      <DependentUpon>EsparzaDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\maderas.cs">
-      <DependentUpon>EsparzaDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\paquetes.cs">
-      <DependentUpon>EsparzaDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\pedido_agradecimiento.cs">
-      <DependentUpon>EsparzaDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\pedido_panoramica.cs">
-      <DependentUpon>EsparzaDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\placa_escultura.cs">
+    <Compile Include="Models\Galeria.cs" />
+    <Compile Include="Models\gallery.cs">
       <DependentUpon>EsparzaDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\slider.cs">
       <DependentUpon>EsparzaDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SliderModel.cs" />
-    <Compile Include="Models\textos.cs">
-      <DependentUpon>EsparzaDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tonos.cs">
-      <DependentUpon>EsparzaDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\universidades.cs">
-      <DependentUpon>EsparzaDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="utilerias\Utilerias.cs" />
     <Compile Include="ViewModels\IndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\images\gallery\intro-11.jpg" />
+    <Content Include="Assets\js\Gallery.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\lightgallery.min.css" />
@@ -424,9 +387,16 @@
     <Content Include="Content\js\client\Registro.js" />
     <Content Include="Content\js\theme.js" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\arrows.html" />
+    <Content Include="fonts\arrows.svg" />
+    <Content Include="fonts\fontawesome-webfont3e6e.html" />
+    <Content Include="fonts\fontawesome-webfont3e6e.svg" />
+    <Content Include="fonts\fontawesome-webfontd41d.html" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\fonts\lgd41d.html" />
     <Content Include="Content\fonts\lgd641.svg" />
+    <Content Include="fonts\lgd41d.html" />
+    <Content Include="fonts\lgd641.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Models\EsparzaDB.Context.tt">
@@ -459,6 +429,28 @@
     <Content Include="Views\Eventos\BlancoYNegro.cshtml" />
     <Content Include="Views\Eventos\Tematica.cshtml" />
     <Content Include="Views\Services\_contentGraduationGallery.cshtml" />
+    <Content Include="Views\Home\ContactPartialViews\_contactHeader.cshtml" />
+    <Content Include="Views\Home\ContactPartialViews\_contactBodyContent.cshtml" />
+    <Content Include="Views\Home\GalleryPartialViews\_galleryHeader.cshtml" />
+    <Content Include="Views\Home\GalleryPartialViews\_galleryContent.cshtml" />
+    <EntityDeploy Include="Models\EsparzaDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EsparzaDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\EsparzaDB.edmx.diagram">
+      <DependentUpon>EsparzaDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="fonts\arrows.ttf" />
+    <Content Include="fonts\arrows.woff" />
+    <Content Include="fonts\fontawesome-webfont3e6e.ttf" />
+    <Content Include="fonts\fontawesome-webfont3e6e.woff" />
+    <Content Include="fonts\fontawesome-webfont3e6e.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="fonts\lgd641.eot" />
+    <Content Include="fonts\lgd641.ttf" />
+    <Content Include="fonts\lgd641.woff" />
+    <Content Include="Views\Services\Fotografia.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
@@ -475,13 +467,6 @@
     <None Include="_bin_deployableAssemblies\amd64\sqlceca40.dll" />
     <None Include="_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT\README_ENU.txt" />
     <None Include="_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT\msvcr90.dll" />
-    <EntityDeploy Include="Models\EsparzaDB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>EsparzaDB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\EsparzaDB.edmx.diagram">
-      <DependentUpon>EsparzaDB.edmx</DependentUpon>
-    </Content>
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
@@ -538,7 +523,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Assets\css\" />
     <Folder Include="Assets\images\slider\" />
-    <Folder Include="Assets\js\" />
     <Folder Include="Content\slider\" />
   </ItemGroup>
   <ItemGroup>

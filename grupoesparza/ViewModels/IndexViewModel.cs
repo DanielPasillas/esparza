@@ -9,6 +9,6 @@ namespace grupoesparza.ViewModels
     public class IndexViewModel
     {
         public IEnumerable<SliderModel> Carousel { get; set; }
-        public IEnumerable<galerias> Gallery { get; set; }
+        public IEnumerable<gallery> Gallery { get; set; }
     }
 }

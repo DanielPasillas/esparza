@@ -14,11 +14,13 @@ namespace grupoesparza.Controllers
 {
     public class HomeController : Controller
     {
-        private esparza_dbEntities _dbContext;
+        private esparza_db_fe _dbContext;
+
+        private int _takeItems = 12;
 
         public HomeController()
         {
-            _dbContext = new esparza_dbEntities();
+            _dbContext = new esparza_db_fe();
         }
         //---------------------------------------------
 
@@ -39,7 +41,7 @@ namespace grupoesparza.Controllers
 
             IndexViewModel viewModel = new IndexViewModel()
             {
-                Gallery = await _dbContext.galerias.ToListAsync(),
+                Gallery = await _dbContext.gallery.Take(9).ToListAsync(),
                 Carousel = _sliderModel
             };
 
@@ -47,6 +49,24 @@ namespace grupoesparza.Controllers
         }
         //---------------------------------------------
 
+        /*
+        *  Home => Gallery
+        */
+        [ActionName("gallery")]
+        public async Task<ActionResult> Galeria()
+        {
+            var _gallery = await _dbContext.gallery.Take(_takeItems).ToListAsync();
+
+            List<Galeria> _listGallery = new List<Galeria>();
+
+            foreach(var gallery in _gallery)
+            {
+                _listGallery.Add(new Galeria(gallery));
+            }
+
+            return View("Galeria", _listGallery);
+        }
+        //---------------------------------------------
 
         /*
          *  Home => Contacto
@@ -58,14 +78,5 @@ namespace grupoesparza.Controllers
         }
         //---------------------------------------------
 
-        /*
-         *  Home => Gallery
-         */
-        [ActionName("gallery")]
-        public ActionResult Galeria()
-        {
-            return View("Galeria");
-        }
-        //---------------------------------------------
     }
 }

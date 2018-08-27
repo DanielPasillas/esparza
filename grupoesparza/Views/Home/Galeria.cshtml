@@ -1,8 +1,24 @@
-﻿
+﻿@model IEnumerable<grupoesparza.Models.Galeria>
+
+
 @{
-    ViewBag.Title = "Galeria";
+    ViewBag.Title = "Galería Fotográfica";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Galeria</h2>
+<!-- Header Cover-->
+@Html.Partial("GalleryPartialViews/_galleryHeader")
 
+<!-- Header Cover-->
+@Html.Partial("GalleryPartialViews/_galleryContent")
+
+<!-- View more button -->
+<div class="isotope-pagination">
+    <div class="iso-load-more">
+        <button data-initial="12" class="btn btn-dark-bordered btn-lg esparza-view-more" >Ver más</button>
+    </div>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/gallery")
+}

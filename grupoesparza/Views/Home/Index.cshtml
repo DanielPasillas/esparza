@@ -13,8 +13,11 @@
 <!-- !! STATIC CONTENT !! -->
 @Html.Partial("PartialViews/_aboutIndex")
 
-<!-- Section articles photos -->
-@Html.Partial("PartialViews/_articlesPhotos")
+@if (Model.Gallery.Any())
+{
+    <!-- Section articles photos -->
+    @Html.Partial("PartialViews/_articlesPhotos")
+}
 
 <!-- Section articles photos -->
 <!-- !! STATIC CONTENT !! -->
