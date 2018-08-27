@@ -69,6 +69,16 @@ namespace grupoesparza.Controllers
         //---------------------------------------------
 
         /*
+         *  Home => About
+         */
+        [ActionName("about")]
+        public ActionResult About()
+        {
+            return View();
+        }
+        //---------------------------------------------
+
+        /*
          *  Home => Contacto
          */
         [ActionName("contacto")]

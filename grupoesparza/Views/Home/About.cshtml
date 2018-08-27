@@ -1,7 +1,11 @@
 ﻿@{
-    ViewBag.Title = "About";
+    ViewBag.Title = "Quiénes somos";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+@Html.Partial("PartialViews/_aboutHeader")
+
+@Html.Partial("PartialViews/_aboutIndex")
+
+<!-- Main footer -->
+<!-- !! STATIC CONTENT !!  -->
+@Html.Partial("~/Views/Footer.cshtml")
