@@ -16,7 +16,8 @@ namespace grupoesparza.Controllers
     {
         private esparza_db_fe _dbContext;
 
-        private int _takeItems = 12;
+        //We will take only 12 items for the gallery.
+        private int _takeItems = 8;
 
         public HomeController()
         {
@@ -41,7 +42,7 @@ namespace grupoesparza.Controllers
 
             IndexViewModel viewModel = new IndexViewModel()
             {
-                Gallery = await _dbContext.gallery.Take(9).ToListAsync(),
+                Gallery = await _dbContext.gallery.Take(_takeItems).ToListAsync(),
                 Carousel = _sliderModel
             };
 
@@ -55,7 +56,9 @@ namespace grupoesparza.Controllers
         [ActionName("gallery")]
         public async Task<ActionResult> Galeria()
         {
-            var _gallery = await _dbContext.gallery.Take(_takeItems).ToListAsync();
+            ViewBag.isAjaxRequest = false;
+
+            var _gallery = await _dbContext.gallery.ToListAsync();
 
             List<Galeria> _listGallery = new List<Galeria>();
 

@@ -10,15 +10,34 @@
 @Html.Partial("GalleryPartialViews/_galleryHeader")
 
 <!-- Header Cover-->
-@Html.Partial("GalleryPartialViews/_galleryContent")
+<!-- Gallery Content -->
+<section id="gallery-list-section">
+    @if (!Model.Any())
+    {
+        <!-- WE did not find any image :( -->
+    }
+    else
+    {
+        <!-- Items Gallery -->
+        <div class="isotope-wrap ">
+            <div class="isotope col-3 gutter-3">
+                <div id="gallery" class="isotope-items-wrap lightgallery gsi-color esparza-grid-gallery-content">
+                    <div class="grid-sizer"></div>
+                    @Html.Partial("GalleryPartialViews/_galleryContent")
+                </div>
+            </div>
+        </div>
+    }
+</section>
 
 <!-- View more button -->
 <div class="isotope-pagination">
     <div class="iso-load-more">
-        <button data-initial="12" class="btn btn-dark-bordered btn-lg esparza-view-more" >Ver más</button>
+        <button class="btn btn-dark-bordered btn-lg esparza-view-more">Ver más</button>
     </div>
 </div>
 
 @section scripts{
     @Scripts.Render("~/bundles/gallery")
+
 }

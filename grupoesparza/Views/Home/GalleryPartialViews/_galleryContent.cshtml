@@ -1,43 +1,40 @@
 ﻿@model IEnumerable<grupoesparza.Models.Galeria>
 
-<!-- Gallery Content -->
-<section id="gallery-list-section">
-
-    @if (!Model.Any())
+@{
+    foreach (var Gallery in Model)
     {
-        <!-- WE did not find any image :( -->
-    }
-    else
-    {
-        <!-- Items Gallery -->
-        <div class="isotope-wrap ">
-            <div class="isotope col-3 gutter-3">
-                <div id="gallery" class="isotope-items-wrap lightgallery gsi-color">
-                    <div class="grid-sizer"></div>
-                    @{
-                        foreach (var Gallery in Model)
-                        {
-
-                            <div class="isotope-item ">
-                                <a href="~/Assets/images/gallery/@Gallery.Imagen"
-                                   class="gallery-single-item lg-trigger wow fadeInUp" data-wow-delay=".3s"
-                                   data-exthumbnail="/Assets/images/gallery/@Gallery.Imagen"
-                                   data-sub-html="<p>@Gallery.Comment</p>">
-                                    <img src="~/Assets/images/gallery/@Gallery.Imagen" class="gs-item-image" alt="">
-                                    <div class="gsi-image-caption">
-                                        <!-- Description Image-->
-                                        @Gallery.Comment
-                                    </div>
-                                    <div class="gs-item-icon"><i class="fa fa-search"></i></div>
-                                </a>
-                            </div>
-
-                        }
-                    }
+        <div class="isotope-item ">
+        @if (ViewBag.isAjaxRequest)
+        {
+            <a href="~/Assets/images/gallery/@Gallery.Imagen"
+               class="gallery-single-item lg-trigger wow fadeInUp" data-wow-delay=".3s"
+               data-exthumbnail="/Assets/images/gallery/@Gallery.Imagen"
+               data-sub-html="<p>@Gallery.Comment</p>"
+               style="visibility: hidden; animation-delay: 0.3s; animation-name: none;">
+                <img src="~/Assets/images/gallery/@Gallery.Imagen" class="gs-item-image" alt="">
+                <div class="gsi-image-caption">
+                    <!-- Description Image-->
+                    @Gallery.Comment
                 </div>
-            </div>
+                <div class="gs-item-icon"><i class="fa fa-search"></i></div>
+            </a>
+        }
+        else
+        {
+            <a href="~/Assets/images/gallery/@Gallery.Imagen"
+               class="gallery-single-item lg-trigger wow fadeInUp" data-wow-delay=".3s"
+               data-exthumbnail="/Assets/images/gallery/@Gallery.Imagen"
+               data-sub-html="<p>@Gallery.Comment</p>">
+                <img src="~/Assets/images/gallery/@Gallery.Imagen" class="gs-item-image" alt="">
+                <div class="gsi-image-caption">
+                    <!-- Description Image-->
+                    @Gallery.Comment
+                </div>
+                <div class="gs-item-icon"><i class="fa fa-search"></i></div>
+            </a>
+        }
         </div>
+     
     }
-</section>
-
+}
 

@@ -10,5 +10,6 @@
  */
 
 (function () {
-    console.log("Hello");
+
+    
 })();
